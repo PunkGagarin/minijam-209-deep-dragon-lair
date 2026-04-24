@@ -1,11 +1,10 @@
 {
   "dependencies": {
     "com.antonysze.custom-play-button": {
-      "version": "https://github.com/antonysze/unity-custom-play-button.git",
+      "version": "file:com.antonysze.custom-play-button",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "ff2dc1a2a3d2266074f766901c1fc1f95aaf96dd"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
@@ -19,7 +18,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dbd76ed996483d219c39d240f785b1790aa039ed"
+      "hash": "395236f9a7a057d2362857e5bb4f3f9a808a9627"
+    },
+    "com.smkplus.custom-toolbar": {
+      "version": "https://github.com/smkplus/CustomToolbar.git#master",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c42b0f4497a2b463490b59be9026cb63b1b884f9"
     },
     "com.unity.2d.animation": {
       "version": "14.0.3",
