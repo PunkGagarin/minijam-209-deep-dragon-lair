@@ -47,7 +47,7 @@ Three installer types:
 
 **Repositories** — inherit `Repository<T> : ScriptableObject` where `T : Definition` for any game data. Bind with `FromInstance()` in an installer.
 
-**UniTask** for all async operations (scene loading, etc.). Never use coroutines for new async work.
+**UniTask** for all async and time-based operations. Coroutines are **never** used — including `WaitForSeconds`, `WaitUntil`, and similar. Use `UniTask.Delay`, `UniTask.WaitUntil`, `async UniTaskVoid` instead. This applies to all code: MonoBehaviour components, services, states.
 
 **Component-based approach** — вся игровая логика (не UI) строится на `MonoBehaviour`-компонентах. Одна ответственность = один компонент. Зависимости между игровыми компонентами через `[SerializeField]` или `GetComponent`, не через Zenject. Пример: `Gameplay/Dragon/` — `Dragon.cs` (сущность) и `Movement.cs` (движение) разделены.
 
