@@ -1,4 +1,3 @@
-using _Project.Scripts.Infrastructure.Configs;
 using _Project.Scripts.Infrastructure.GameStates.States;
 using _Project.Scripts.Infrastructure.GameStates;
 using UnityEngine;
@@ -17,7 +16,6 @@ namespace _Project.Scripts.Infrastructure
 
         private void BindConfigs()
         {
-            Container.Bind<RemoteConfigs>().AsSingle();
         }
 
         private void BindStateMachine()
