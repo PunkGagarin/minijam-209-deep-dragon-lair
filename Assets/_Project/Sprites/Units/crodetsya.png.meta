@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 3dd9a6f21c75248a6a2b8153944cd3ed
+guid: 70af7c1ce11404775b7935a487fa1ada
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2089858276776980109
-    second: other leg_0
+      213: -6762012082815764069
+    second: crodetsya_0
+  - first:
+      213: 8534530283870309428
+    second: crodetsya_1
+  - first:
+      213: 364642549139051631
+    second: crodetsya_2
+  - first:
+      213: 3352198665098129576
+    second: crodetsya_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: other leg_0
+      name: crodetsya_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 987
-        width: 15
-        height: 21
+        x: 17
+        y: 4
+        width: 55
+        height: 82
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8ea33ab70ba00d10800000000000000
-      internalID: 2089858276776980109
+      spriteID: b99fddc56d18822a0800000000000000
+      internalID: -6762012082815764069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crodetsya_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 3
+        width: 68
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43c47e6431eb07670800000000000000
+      internalID: 8534530283870309428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crodetsya_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 3
+        width: 55
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f641d6b67787f0500800000000000000
+      internalID: 364642549139051631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crodetsya_3
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 2
+        width: 68
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a076b9dce6658e20800000000000000
+      internalID: 3352198665098129576
       vertices: []
       indices: 
       edges: []
@@ -138,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5ada09cb95c3542609fe8e3b8dd9894a
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +221,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      other leg_0: 2089858276776980109
+      crodetsya_0: -6762012082815764069
+      crodetsya_1: 8534530283870309428
+      crodetsya_2: 364642549139051631
+      crodetsya_3: 3352198665098129576
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
