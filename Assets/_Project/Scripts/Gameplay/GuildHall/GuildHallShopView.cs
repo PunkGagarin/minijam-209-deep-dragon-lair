@@ -22,9 +22,16 @@ namespace _Project.Scripts.Gameplay.GuildHall
         public event Action OnCloseClicked = delegate { };
 
         private Tween _shakeTween;
+        private Color _buttonNormalColor;
+        private Color _buttonHighlightedColor;
+        private Color _buttonSelectedColor;
 
         private void Awake()
         {
+            ColorBlock initialColors = _upgradeGoldPerClickButton.colors;
+            _buttonNormalColor = initialColors.normalColor;
+            _buttonHighlightedColor = initialColors.highlightedColor;
+            _buttonSelectedColor = initialColors.selectedColor;
             _upgradeGoldPerClickButton.onClick.AddListener(() => OnUpgradeClicked.Invoke());
 
             foreach (Button closeButton in _closeButtons)
@@ -45,8 +52,15 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         public void SetCostText(int cost) => _costText.text = cost.ToString();
 
-        public void SetUpgradeButtonInteractable(bool interactable) =>
-            _upgradeGoldPerClickButton.interactable = interactable;
+        public void SetUpgradeButtonAppearance(bool canAfford)
+        {
+            ColorBlock colors = _upgradeGoldPerClickButton.colors;
+            Color disabled = colors.disabledColor;
+            colors.normalColor = canAfford ? _buttonNormalColor : disabled;
+            colors.highlightedColor = canAfford ? _buttonHighlightedColor : disabled;
+            colors.selectedColor = canAfford ? _buttonSelectedColor : disabled;
+            _upgradeGoldPerClickButton.colors = colors;
+        }
 
         public void PlayInsufficientFundsShake()
         {

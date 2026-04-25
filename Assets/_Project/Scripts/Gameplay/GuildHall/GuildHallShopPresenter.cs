@@ -49,7 +49,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         {
             _shopView.SetBonusGoldPerClickText(_goldService.CurrentBonusPerClick);
             _shopView.SetCostText(CurrentCost);
-            _shopView.SetUpgradeButtonInteractable(_goldService.CurrentAmount >= CurrentCost);
+            _shopView.SetUpgradeButtonAppearance(_goldService.CurrentAmount >= CurrentCost);
         }
     }
 }
