@@ -975,9 +975,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Movement
   _speed: 1
   _delayAtGuild: 3
-  _delayAtGather: 5
-  _guildPoint: {fileID: 0}
-  _gatherGoldPoint: {fileID: 0}
 --- !u!1 &436624405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.UnitsInstaller
   _spawner: {fileID: 332056764}
   _unitView: {fileID: 2143477103}
+  unitConfig: {fileID: 11400000, guid: 5e65d6d7be834e579a5ba91d0904b6cc, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

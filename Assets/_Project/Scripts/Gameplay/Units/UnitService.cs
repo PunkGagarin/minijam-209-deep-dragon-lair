@@ -14,6 +14,7 @@ namespace _Project.Scripts.Gameplay.Units
     {
         [Inject] private UnitSpawner _spawner;
         [Inject] private GuildHallShopConfig _shopConfig;
+        [Inject] private UnitConfig _unitConfig;
         [Inject] private GoldService _goldService;
 
         private readonly List<Unit> _units = new();
@@ -36,11 +37,22 @@ namespace _Project.Scripts.Gameplay.Units
             if (!_goldService.TrySpend(currentCost))
                 return false;
 
-            Unit unit = _spawner.SpawnUnit();
+            Unit unit = _spawner.SpawnUnit(_unitConfig.MineTime);
 
+            SubscribeToUnit(unit);
             _units.Add(unit);
             OnChanged.Invoke();
             return true;
+        }
+
+        private void SubscribeToUnit(Unit unit)
+        {
+            unit.OnReturnedToGuild += HandleUnitReturnedToGuild;
+        }
+
+        private void HandleUnitReturnedToGuild(Unit unit)
+        {
+            _goldService.CollectFromUnit(_unitConfig.BaseGoldPerTrip);
         }
     }
 }

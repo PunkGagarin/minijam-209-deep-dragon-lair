@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.Units
@@ -8,6 +8,7 @@ namespace _Project.Scripts.Gameplay.Units
     {
         [SerializeField] private UnitSpawner _spawner;
         [SerializeField] private UnitView _unitView;
+        [FormerlySerializedAs("_unitMiningConfig")] [SerializeField] private UnitConfig unitConfig;
 
         public override void InstallBindings()
         {
@@ -16,6 +17,9 @@ namespace _Project.Scripts.Gameplay.Units
 
             Container.Bind<UnitView>()
                 .FromInstance(_unitView).AsSingle();
+
+            Container.Bind<UnitConfig>()
+                .FromInstance(unitConfig).AsSingle();
 
             Container.Bind<UnitService>()
                 .FromNew().AsSingle();

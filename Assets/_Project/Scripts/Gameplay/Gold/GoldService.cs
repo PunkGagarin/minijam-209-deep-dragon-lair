@@ -13,10 +13,16 @@ namespace _Project.Scripts.Gameplay.Gold
         public int CurrentAmount => _goldModel.Amount;
         public int CurrentBonusPerClick => _goldModel.BonusPerClick;
 
-        public void Collect(int baseAmount = 1)
+        public void CollectFromClick(int baseAmount = 1)
         {
             int total = Mathf.RoundToInt((baseAmount + _goldModel.BonusPerClick) * _goldModel.Multiplier);
             _goldModel.Add(total);
+            OnAmountChanged.Invoke();
+        }
+
+        public void CollectFromUnit(int amount)
+        {
+            _goldModel.Add(amount);
             OnAmountChanged.Invoke();
         }
 

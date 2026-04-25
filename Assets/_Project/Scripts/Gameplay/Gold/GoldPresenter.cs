@@ -15,7 +15,7 @@ namespace _Project.Scripts.Gameplay.Gold
             UpdateView();
         }
 
-        private void HandleGoldClicked(GoldPile _) => _goldService.Collect();
+        private void HandleGoldClicked(GoldPile _) => _goldService.CollectFromClick();
 
         private void UpdateView() => _goldView.SetAmount(_goldService.CurrentAmount);
     }

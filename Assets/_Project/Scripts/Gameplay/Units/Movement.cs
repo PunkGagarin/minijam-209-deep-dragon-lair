@@ -10,21 +10,19 @@ namespace _Project.Scripts.Gameplay.Units
     public class Movement : MonoBehaviour
     {
         [SerializeField] private float _speed = 3f;
-        [FormerlySerializedAs("_delayAtA")]
         [SerializeField] private float _delayAtGuild = 1f;
-        [FormerlySerializedAs("_delayAtB")]
-        [SerializeField] private float _delayAtGather = 1f;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
 
-        [FormerlySerializedAs("_pointA")]
-        [SerializeField]
         private Transform _guildPoint;
-        [FormerlySerializedAs("_pointB")]
-        [SerializeField]
         private Transform _gatherGoldPoint;
 
         private CancellationTokenSource _cts;
+        private float _mineTime;
 
-        public void Initialize(Transform guildPoint, Transform gatherGoldPoint)
+        public event System.Action OnMiningCompleted = delegate { };
+        public event System.Action OnReachedGuild = delegate { };
+
+        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime)
         {
             if (guildPoint == null || gatherGoldPoint == null)
             {
@@ -34,6 +32,7 @@ namespace _Project.Scripts.Gameplay.Units
 
             _guildPoint = guildPoint;
             _gatherGoldPoint = gatherGoldPoint;
+            _mineTime = mineTime;
 
             _cts?.Cancel();
             _cts?.Dispose();
@@ -57,11 +56,18 @@ namespace _Project.Scripts.Gameplay.Units
 
             while (!token.IsCancellationRequested)
             {
-                Transform target = goingToGather ? _gatherGoldPoint : _guildPoint;
-                float delay = goingToGather ? _delayAtGather : _delayAtGuild;
-
-                await MoveToPoint(target, token);
-                await UniTask.Delay(System.TimeSpan.FromSeconds(delay), cancellationToken: token);
+                if (goingToGather)
+                {
+                    await MoveToPoint(_gatherGoldPoint, token);
+                    await UniTask.Delay(System.TimeSpan.FromSeconds(_mineTime), cancellationToken: token);
+                    OnMiningCompleted.Invoke();
+                }
+                else
+                {
+                    await MoveToPoint(_guildPoint, token);
+                    OnReachedGuild.Invoke();
+                    await UniTask.Delay(System.TimeSpan.FromSeconds(_delayAtGuild), cancellationToken: token);
+                }
 
                 goingToGather = !goingToGather;
             }
@@ -69,6 +75,10 @@ namespace _Project.Scripts.Gameplay.Units
 
         private async UniTask MoveToPoint(Transform target, CancellationToken token)
         {
+            float dx = target.position.x - transform.position.x;
+            if (Mathf.Abs(dx) > Mathf.Epsilon && _spriteRenderer != null)
+                _spriteRenderer.flipX = dx < 0f;
+
             while (transform.position != target.position && !token.IsCancellationRequested)
             {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);

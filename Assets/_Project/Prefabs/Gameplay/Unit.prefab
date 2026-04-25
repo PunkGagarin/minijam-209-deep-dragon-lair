@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Movement
   _speed: 1
   _delayAtGuild: 3
+  _spriteRenderer: {fileID: 3354229344415223791}
   _delayAtGather: 5
   _guildPoint: {fileID: 0}
   _gatherGoldPoint: {fileID: 0}

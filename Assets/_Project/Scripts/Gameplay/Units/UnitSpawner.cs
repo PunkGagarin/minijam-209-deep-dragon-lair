@@ -10,7 +10,7 @@ namespace _Project.Scripts.Gameplay.Units
 
         public bool CanSpawn => _unitPrefab != null && _guildPoint != null && _gatherGoldPoint != null;
 
-        public Unit SpawnUnit()
+        public Unit SpawnUnit(float mineTime)
         {
             if (_unitPrefab == null)
             {
@@ -27,7 +27,7 @@ namespace _Project.Scripts.Gameplay.Units
             }
 
             Unit unit = Instantiate(_unitPrefab, _guildPoint.position, Quaternion.identity);
-            unit.Initialize(_guildPoint, _gatherGoldPoint);
+            unit.Initialize(_guildPoint, _gatherGoldPoint, mineTime);
             return unit;
         }
     }

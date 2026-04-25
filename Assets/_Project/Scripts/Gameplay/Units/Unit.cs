@@ -7,14 +7,36 @@ namespace _Project.Scripts.Gameplay.Units
     {
         private Movement _movement;
 
+        public event System.Action<Unit> OnMiningCompleted = delegate { };
+        public event System.Action<Unit> OnReturnedToGuild = delegate { };
+
         private void Awake()
         {
             _movement = GetComponent<Movement>();
         }
 
-        public void Initialize(Transform guildPoint, Transform gatherGoldPoint)
+        private void OnEnable()
         {
-            _movement.Initialize(guildPoint, gatherGoldPoint);
+            _movement.OnMiningCompleted += HandleMiningCompleted;
+            _movement.OnReachedGuild += HandleReachedGuild;
         }
+
+        private void OnDisable()
+        {
+            if (_movement == null)
+                return;
+
+            _movement.OnMiningCompleted -= HandleMiningCompleted;
+            _movement.OnReachedGuild -= HandleReachedGuild;
+        }
+
+        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime)
+        {
+            _movement.Initialize(guildPoint, gatherGoldPoint, mineTime);
+        }
+
+        private void HandleMiningCompleted() => OnMiningCompleted.Invoke(this);
+
+        private void HandleReachedGuild() => OnReturnedToGuild.Invoke(this);
     }
 }
