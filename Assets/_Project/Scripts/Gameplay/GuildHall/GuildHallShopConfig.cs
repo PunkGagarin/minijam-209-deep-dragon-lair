@@ -11,6 +11,5 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         [field: SerializeField] public int UnitBaseCost { get; private set; } = 50;
         [field: SerializeField] public float UnitCostMultiplier { get; private set; } = 2f;
-        [field: SerializeField] public int MaxUnits { get; private set; } = 5;
     }
 }

@@ -1,7 +1,5 @@
 using System;
-
 using UnityEngine;
-
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.Gold

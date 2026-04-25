@@ -1,8 +1,6 @@
 using _Project.Scripts.Gameplay.Gold;
 using _Project.Scripts.Gameplay.Units;
 
-using UnityEngine;
-
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.GuildHall
@@ -13,16 +11,12 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [Inject] private GuildHallShopView _shopView;
         [Inject] private GoldService _goldService;
         [Inject] private GuildHallShopConfig _config;
-        [Inject] private UnitSpawner _unitSpawner;
+        [Inject] private UnitService _unitService;
 
-        private int _upgradeLevel = 0;
-        private int _unitCount = 0;
+        private int _goldPerClickUpgradeLevel = 0;
 
         private int CurrentCost =>
-            Mathf.RoundToInt(_config.BaseCost * Mathf.Pow(_config.CostMultiplier, _upgradeLevel));
-
-        private int UnitCurrentCost =>
-            Mathf.RoundToInt(_config.UnitBaseCost * Mathf.Pow(_config.UnitCostMultiplier, _unitCount));
+            UnityEngine.Mathf.RoundToInt(_config.BaseCost * UnityEngine.Mathf.Pow(_config.CostMultiplier, _goldPerClickUpgradeLevel));
 
         public void Initialize()
         {
@@ -31,6 +25,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.BuyUnitButton.OnClicked += HandleBuyUnit;
             _shopView.OnCloseClicked += HandleClose;
             _goldService.OnAmountChanged += UpdateView;
+            _unitService.OnChanged += UpdateView;
 
             UpdateView();
         }
@@ -47,25 +42,20 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 return;
             }
 
-            _upgradeLevel++;
+            _goldPerClickUpgradeLevel++;
             _goldService.UpgradeBonusPerClick(_config.BonusPerUpgrade);
             UpdateView();
         }
 
         private void HandleBuyUnit()
         {
-            if (_unitCount >= _config.MaxUnits)
-                return;
-
-            if (!_goldService.TrySpend(UnitCurrentCost))
+            if (_goldService.CurrentAmount < _unitService.CurrentCost)
             {
                 _shopView.BuyUnitButton.PlayInsufficientFundsShake();
                 return;
             }
 
-            _unitCount++;
-            _unitSpawner.SpawnUnit();
-            UpdateView();
+            _unitService.TryPurchaseUnit();
         }
 
         private void UpdateView()
@@ -74,10 +64,10 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeGoldPerClickButton.SetCostText(CurrentCost);
             _shopView.UpgradeGoldPerClickButton.SetAppearance(_goldService.CurrentAmount >= CurrentCost);
 
-            bool canBuyUnit = _unitCount < _config.MaxUnits;
-            _shopView.BuyUnitButton.SetStatText($"{_unitCount}/{_config.MaxUnits}");
-            _shopView.BuyUnitButton.SetCostText(UnitCurrentCost);
-            _shopView.BuyUnitButton.SetAppearance(canBuyUnit && _goldService.CurrentAmount >= UnitCurrentCost);
+            _shopView.BuyUnitButton.SetStatText(_unitService.Count.ToString());
+            _shopView.BuyUnitButton.SetCostText(_unitService.CurrentCost);
+            _shopView.BuyUnitButton.SetAppearance(
+                _unitService.CanPurchaseUnit && _goldService.CurrentAmount >= _unitService.CurrentCost);
         }
     }
 }

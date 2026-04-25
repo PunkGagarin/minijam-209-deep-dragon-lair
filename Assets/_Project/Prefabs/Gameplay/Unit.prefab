@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3354229344415223791}
   - component: {fileID: 8485845317439284657}
   - component: {fileID: 9099827516184235064}
+  - component: {fileID: -8686756688444098767}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -105,11 +106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b72cfca376e4b7d80b1ff6eb6e84d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Movement
-  _pointA: {fileID: 0}
-  _pointB: {fileID: 0}
   _speed: 1
-  _delayAtB: 5
-  _delayAtA: 3
+  _delayAtGuild: 3
+  _delayAtGather: 5
+  _guildPoint: {fileID: 0}
+  _gatherGoldPoint: {fileID: 0}
 --- !u!95 &9099827516184235064
 Animator:
   serializedVersion: 7
@@ -132,3 +133,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8686756688444098767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3910268173878555644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6352db322d25e4244b40fb29f1b9af5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Unit
