@@ -48,11 +48,21 @@ namespace _Project.Scripts.Gameplay.Units
         private void SubscribeToUnit(Unit unit)
         {
             unit.OnReturnedToGuild += HandleUnitReturnedToGuild;
+            unit.OnDied += HandleUnitDied;
         }
 
         private void HandleUnitReturnedToGuild(Unit unit)
         {
             _goldService.CollectFromUnit(_unitConfig.BaseGoldPerTrip);
+        }
+
+        private void HandleUnitDied(Unit unit)
+        {
+            unit.OnReturnedToGuild -= HandleUnitReturnedToGuild;
+            unit.OnDied -= HandleUnitDied;
+
+            if (_units.Remove(unit))
+                OnChanged.Invoke();
         }
     }
 }
