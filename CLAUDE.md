@@ -87,6 +87,7 @@ Three installer types:
 
 - `[SerializeField] private` for inspector-exposed fields — never `public` fields
 - `[Inject]` fields where possible over constructor
+- Prefer `List<T>` over arrays (`T[]`) where possible — including `[SerializeField]` коллекции
 - Usings grouped: System → UnityEngine → third-party → project
 
 ## Key dependencies

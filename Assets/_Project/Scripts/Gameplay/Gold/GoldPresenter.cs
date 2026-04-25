@@ -11,13 +11,12 @@ namespace _Project.Scripts.Gameplay.Gold
         public void Initialize()
         {
             _goldPile.OnClicked += HandleGoldClicked;
-            _goldView.SetAmount(_goldService.CurrentAmount);
+            _goldService.OnAmountChanged += UpdateView;
+            UpdateView();
         }
 
-        private void HandleGoldClicked(GoldPile _)
-        {
-            _goldService.Collect();
-            _goldView.SetAmount(_goldService.CurrentAmount);
-        }
+        private void HandleGoldClicked(GoldPile _) => _goldService.Collect();
+
+        private void UpdateView() => _goldView.SetAmount(_goldService.CurrentAmount);
     }
 }
