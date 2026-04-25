@@ -1,3 +1,5 @@
+using _Project.Scripts.Gameplay.Units;
+
 using UnityEngine;
 
 using Zenject;
@@ -9,6 +11,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [SerializeField] private GuildHall _guildHall;
         [SerializeField] private GuildHallShopView _shopView;
         [SerializeField] private GuildHallShopConfig _config;
+        [SerializeField] private UnitSpawner _unitSpawner;
 
         public override void InstallBindings()
         {
@@ -20,6 +23,9 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
             Container.Bind<GuildHallShopConfig>()
                 .FromInstance(_config).AsSingle();
+
+            Container.Bind<UnitSpawner>()
+                .FromInstance(_unitSpawner).AsSingle();
 
             Container.BindInterfacesAndSelfTo<GuildHallShopPresenter>()
                 .FromNew().AsSingle()
