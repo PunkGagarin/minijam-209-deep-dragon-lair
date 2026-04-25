@@ -26,6 +26,9 @@ namespace _Project.Scripts.Gameplay.Units
         public int CurrentCost =>
             Mathf.RoundToInt(_shopConfig.UnitBaseCost * Mathf.Pow(_shopConfig.UnitCostMultiplier, _units.Count));
 
+        public float MoveSpeedMultiplier { get; private set; } = 1f;
+        public int GoldPerTripBonus { get; private set; } = 0;
+
         public bool CanPurchaseUnit => _spawner.CanSpawn;
 
         public bool TryPurchaseUnit()
@@ -38,12 +41,22 @@ namespace _Project.Scripts.Gameplay.Units
                 return false;
 
             Unit unit = _spawner.SpawnUnit(_unitConfig.MineTime);
+            unit.GetComponent<Movement>().SetSpeedMultiplier(MoveSpeedMultiplier);
 
             SubscribeToUnit(unit);
             _units.Add(unit);
             OnChanged.Invoke();
             return true;
         }
+
+        public void UpgradeMoveSpeed(float bonusPerUpgrade)
+        {
+            MoveSpeedMultiplier *= 1f + bonusPerUpgrade;
+            foreach (Unit unit in _units)
+                unit.GetComponent<Movement>().SetSpeedMultiplier(MoveSpeedMultiplier);
+        }
+
+        public void UpgradeGoldPerTrip(int bonus) => GoldPerTripBonus += bonus;
 
         private void SubscribeToUnit(Unit unit)
         {
@@ -53,7 +66,7 @@ namespace _Project.Scripts.Gameplay.Units
 
         private void HandleUnitReturnedToGuild(Unit unit)
         {
-            _goldService.CollectFromUnit(_unitConfig.BaseGoldPerTrip);
+            _goldService.CollectFromUnit(_unitConfig.BaseGoldPerTrip + GoldPerTripBonus);
         }
 
         private void HandleUnitDied(Unit unit)

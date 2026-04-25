@@ -10,10 +10,16 @@ namespace _Project.Scripts.Gameplay.GuildHall
     {
         [SerializeField] private ShopButtonView _upgradeGoldPerClickButton;
         [SerializeField] private ShopButtonView _buyUnitButton;
+        [SerializeField] private ShopButtonView _upgradeMoveSpeedButton;
+        [SerializeField] private ShopButtonView _upgradeNoiseReductionButton;
+        [SerializeField] private ShopButtonView _upgradeUnitGoldButton;
         [SerializeField] private List<Button> _closeButtons;
 
         public ShopButtonView UpgradeGoldPerClickButton => _upgradeGoldPerClickButton;
         public ShopButtonView BuyUnitButton => _buyUnitButton;
+        public ShopButtonView UpgradeMoveSpeedButton => _upgradeMoveSpeedButton;
+        public ShopButtonView UpgradeNoiseReductionButton => _upgradeNoiseReductionButton;
+        public ShopButtonView UpgradeUnitGoldButton => _upgradeUnitGoldButton;
 
         public event Action OnCloseClicked = delegate { };
 

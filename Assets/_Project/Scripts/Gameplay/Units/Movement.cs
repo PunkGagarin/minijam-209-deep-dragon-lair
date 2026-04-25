@@ -18,6 +18,9 @@ namespace _Project.Scripts.Gameplay.Units
 
         private CancellationTokenSource _cts;
         private float _mineTime;
+        private float _speedMultiplier = 1f;
+
+        public void SetSpeedMultiplier(float multiplier) => _speedMultiplier = multiplier;
 
         public event System.Action OnMiningCompleted = delegate { };
         public event System.Action OnReachedGuild = delegate { };
@@ -81,7 +84,7 @@ namespace _Project.Scripts.Gameplay.Units
 
             while (transform.position != target.position && !token.IsCancellationRequested)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * _speedMultiplier * Time.deltaTime);
                 await UniTask.Yield(PlayerLoopTiming.Update, token);
             }
         }

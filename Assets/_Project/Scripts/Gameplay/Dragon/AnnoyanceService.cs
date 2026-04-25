@@ -1,5 +1,7 @@
 using System;
 
+using UnityEngine;
+
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.Dragon
@@ -14,6 +16,7 @@ namespace _Project.Scripts.Gameplay.Dragon
 
         public float Normalized => _model.Normalized;
         public bool IsFilled { get; private set; }
+        public float NoiseMultiplier { get; private set; } = 1f;
 
         public void Initialize()
         {
@@ -25,7 +28,7 @@ namespace _Project.Scripts.Gameplay.Dragon
             if (IsFilled)
                 return;
 
-            _model.Add(amount);
+            _model.Add(amount * NoiseMultiplier);
             OnChanged.Invoke();
 
             if (_model.Current >= _model.Max)
@@ -40,6 +43,11 @@ namespace _Project.Scripts.Gameplay.Dragon
             _model.Reset();
             IsFilled = false;
             OnChanged.Invoke();
+        }
+
+        public void UpgradeNoiseReduction(float reductionPerUpgrade)
+        {
+            NoiseMultiplier *= 1f - Mathf.Clamp01(reductionPerUpgrade);
         }
     }
 }
