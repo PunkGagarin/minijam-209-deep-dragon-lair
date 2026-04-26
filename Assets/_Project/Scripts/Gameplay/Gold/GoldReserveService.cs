@@ -7,7 +7,6 @@ namespace _Project.Scripts.Gameplay.Gold
     public class GoldReserveService : IInitializable
     {
         [Inject] private GoldReserveModel _model;
-        [Inject] private GoldReserveConfig _config;
 
         public event Action OnChanged = delegate { };
         public event Action OnDepleted = delegate { };
@@ -19,7 +18,6 @@ namespace _Project.Scripts.Gameplay.Gold
 
         public void Initialize()
         {
-            _model.SetMax(_config.MaxValue);
         }
 
         public int TryConsume(int requested)
@@ -38,6 +36,13 @@ namespace _Project.Scripts.Gameplay.Gold
             }
 
             return taken;
+        }
+
+        public void SetStageReserve(int maxValue)
+        {
+            _model.SetMax(maxValue);
+            IsDepleted = false;
+            OnChanged.Invoke();
         }
     }
 }

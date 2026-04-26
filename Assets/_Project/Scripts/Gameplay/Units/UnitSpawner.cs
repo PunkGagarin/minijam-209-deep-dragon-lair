@@ -10,6 +10,11 @@ namespace _Project.Scripts.Gameplay.Units
 
         public bool CanSpawn => _unitPrefab != null && _guildPoint != null && _gatherGoldPoint != null;
 
+        public void SetGatherGoldPoint(Transform gatherGoldPoint)
+        {
+            _gatherGoldPoint = gatherGoldPoint;
+        }
+
         public Unit SpawnUnit(float mineTime)
         {
             if (_unitPrefab == null)

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d1977ceb3f131f4b8d91a25081b81cc, type: 3}
   m_Name: DragonConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Dragon.AnnoyanceConfig
-  <MaxValue>k__BackingField: 150
+  <MaxValue>k__BackingField: 200
   <GoldClickChance>k__BackingField: 0.2
-  <GoldClickAmount>k__BackingField: 5
+  <GoldClickAmount>k__BackingField: 3
   <MiningCompletedChance>k__BackingField: 0.5
   <MiningCompletedAmount>k__BackingField: 2
   <MovementTickInterval>k__BackingField: 1
-  <MovementTickChance>k__BackingField: 0.05
+  <MovementTickChance>k__BackingField: 0.1
   <MovementTickAmount>k__BackingField: 1
   <FillResetDelay>k__BackingField: 3
