@@ -4,5 +4,6 @@ namespace _Project.Scripts.Gameplay.Gold
 {
     public class GoldPile : ClickableView<GoldPile>
     {
+        
     }
 }
