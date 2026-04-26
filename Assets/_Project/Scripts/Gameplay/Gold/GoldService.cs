@@ -7,6 +7,7 @@ namespace _Project.Scripts.Gameplay.Gold
     public class GoldService
     {
         [Inject] private GoldModel _goldModel;
+        [Inject] private GoldReserveService _reserve;
 
         public event Action OnAmountChanged = delegate { };
 
@@ -16,13 +17,21 @@ namespace _Project.Scripts.Gameplay.Gold
         public void CollectFromClick(int baseAmount = 1)
         {
             int total = Mathf.RoundToInt((baseAmount + _goldModel.BonusPerClick) * _goldModel.Multiplier);
-            _goldModel.Add(total);
+            int actual = _reserve.TryConsume(total);
+            if (actual <= 0)
+                return;
+
+            _goldModel.Add(actual);
             OnAmountChanged.Invoke();
         }
 
         public void CollectFromUnit(int amount)
         {
-            _goldModel.Add(amount);
+            int actual = _reserve.TryConsume(amount);
+            if (actual <= 0)
+                return;
+
+            _goldModel.Add(actual);
             OnAmountChanged.Invoke();
         }
 
