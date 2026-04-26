@@ -1,5 +1,8 @@
+using System;
+
 using _Project.Scripts.Gameplay.Currencies;
 using _Project.Scripts.Gameplay.Dragon;
+using _Project.Scripts.Gameplay.Gem;
 using _Project.Scripts.Gameplay.Gold;
 using _Project.Scripts.Gameplay.Units;
 
@@ -17,7 +20,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [Inject] private GuildHallShopConfig _config;
         [Inject] private UnitService _unitService;
         [Inject] private AnnoyanceService _annoyanceService;
-        [Inject] private CurrencyRegistry _currencyRegistry;
+        [Inject] private GemService _gemService;
 
         private int _goldPerClickUpgradeLevel = 0;
         private int _moveSpeedUpgradeLevel = 0;
@@ -25,6 +28,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
         private int _unitGoldUpgradeLevel = 0;
         private int _gemChanceUpgradeLevel = 0;
         private int _gemQuantityUpgradeLevel = 0;
+
+        private bool _gemUpgradesUnlocked;
 
         private int CurrentCost =>
             Mathf.RoundToInt(_config.BaseCost * Mathf.Pow(_config.CostMultiplier, _goldPerClickUpgradeLevel));
@@ -58,7 +63,29 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _goldService.OnAmountChanged += UpdateView;
             _unitService.OnChanged += UpdateView;
 
+            _gemService.OnAmountChanged += HandleGemAmountChanged;
+            ApplyGemUnlockState();
+
             UpdateView();
+        }
+
+        private void HandleGemAmountChanged()
+        {
+            if (_gemUpgradesUnlocked || _gemService.CurrentAmount <= 0)
+                return;
+
+            ApplyGemUnlockState();
+            UpdateView();
+        }
+
+        private void ApplyGemUnlockState()
+        {
+            _gemUpgradesUnlocked = _gemService.CurrentAmount > 0;
+
+            foreach (var button in _shopView.GetButtonsByCurrency(CurrencyType.Gem))
+            {
+                button.gameObject.SetActive(_gemService.CurrentAmount > 0);
+            }
         }
 
         private void HandleBuildingClicked(GuildHall _) => _shopView.Show();
@@ -154,11 +181,19 @@ namespace _Project.Scripts.Gameplay.GuildHall
             UpdateView();
         }
 
-        private bool TrySpendVia(ShopButtonView button, int amount) =>
-            _currencyRegistry.TrySpend(button.Currency, amount);
+        private bool TrySpendVia(ShopButtonView button, int amount) => button.Currency switch
+        {
+            CurrencyType.Gold => _goldService.TrySpend(amount),
+            CurrencyType.Gem => _gemService.TrySpend(amount),
+            _ => throw new ArgumentOutOfRangeException(nameof(button), button.Currency, null),
+        };
 
-        private int GetAmountVia(ShopButtonView button) =>
-            _currencyRegistry.GetAmount(button.Currency);
+        private int GetAmountVia(ShopButtonView button) => button.Currency switch
+        {
+            CurrencyType.Gold => _goldService.CurrentAmount,
+            CurrencyType.Gem => _gemService.CurrentAmount,
+            _ => throw new ArgumentOutOfRangeException(nameof(button), button.Currency, null),
+        };
 
         private void UpdateView()
         {

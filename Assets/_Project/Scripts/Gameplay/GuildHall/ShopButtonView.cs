@@ -4,18 +4,37 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Project.Scripts.Gameplay.GuildHall
 {
     public class ShopButtonView : MonoBehaviour
     {
-        [SerializeField] private Button _button;
-        [SerializeField] private TMP_Text _costText;
-        [SerializeField] private TMP_Text _statText;
-        [SerializeField] private CurrencyType _currency;
-        [SerializeField] private float _shakeDuration = 0.4f;
-        [SerializeField] private float _shakeStrength = 10f;
-        [SerializeField] private int _shakeVibrato = 20;
+        [SerializeField]
+        private Button _button;
+
+        [SerializeField]
+        private TMP_Text _costText;
+
+        [SerializeField]
+        private TMP_Text _statText;
+
+        [SerializeField]
+        private Image _currencyIcon;
+
+        [SerializeField]
+        private CurrencyType _currency;
+
+        [SerializeField]
+        private float _shakeDuration = 0.4f;
+
+        [SerializeField]
+        private float _shakeStrength = 10f;
+
+        [SerializeField]
+        private int _shakeVibrato = 20;
+
+        [Inject] private CurrenciesRepository _currenciesRepository;
 
         public CurrencyType Currency => _currency;
 
@@ -32,6 +51,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
             CaptureOriginalColors();
             _button.onClick.AddListener(() => OnClicked.Invoke());
         }
+
+        private void Start() => _currencyIcon.sprite = _currenciesRepository.GetIcon(_currency);
 
         private void CaptureOriginalColors()
         {
@@ -56,6 +77,11 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         public void SetAppearance(bool canAfford)
         {
+            if (!gameObject.activeSelf)
+            {
+                SetVisible(canAfford);
+            }
+            
             CaptureOriginalColors();
             ColorBlock colors = _button.colors;
             Color disabled = colors.disabledColor;
@@ -70,5 +96,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shakeTween?.Kill(complete: true);
             _shakeTween = _button.transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
         }
+
+        public void SetVisible(bool visible) => gameObject.SetActive(visible);
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using _Project.Scripts.Gameplay.Currencies;
 using _Project.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +18,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [SerializeField] private ShopButtonView _upgradeGemChanceButton;
         [SerializeField] private ShopButtonView _upgradeGemQuantityButton;
         [SerializeField] private List<Button> _closeButtons;
+        [SerializeField] private List<ShopButtonView> _shopButtons;
 
         public ShopButtonView UpgradeGoldPerClickButton => _upgradeGoldPerClickButton;
         public ShopButtonView BuyUnitButton => _buyUnitButton;
@@ -33,6 +36,16 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 closeButton.onClick.AddListener(() => OnCloseClicked.Invoke());
 
             Hide();
+        }
+
+        public List<ShopButtonView> GetButtonsByCurrency(CurrencyType currencyType)
+        {
+            if (_shopButtons.Count == 0)
+            {
+                _shopButtons.AddRange(GetComponentsInChildren<ShopButtonView>(true));
+            }
+            
+            return _shopButtons.Where( el => el.Currency == currencyType).ToList();
         }
 
         private void OnDestroy()

@@ -1,5 +1,3 @@
-using _Project.Scripts.Gameplay.Currencies;
-
 using UnityEngine;
 
 using Zenject;
@@ -15,7 +13,7 @@ namespace _Project.Scripts.Gameplay.Gem
             Container.Bind<GemModel>()
                 .FromNew().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<GemService>()
+            Container.Bind<GemService>()
                 .FromNew().AsSingle();
 
             Container.Bind<GemView>()

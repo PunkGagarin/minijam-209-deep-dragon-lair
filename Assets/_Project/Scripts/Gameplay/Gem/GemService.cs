@@ -1,12 +1,10 @@
 using System;
 
-using _Project.Scripts.Gameplay.Currencies;
-
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.Gem
 {
-    public class GemService : ICurrencyWallet
+    public class GemService
     {
         [Inject] private GemModel _gemModel;
 
