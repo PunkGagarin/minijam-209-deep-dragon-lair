@@ -61,13 +61,15 @@ namespace _Project.Scripts.Gameplay.Units
             {
                 if (goingToGather)
                 {
-                    await MoveToPoint(_gatherGoldPoint, token);
+                    var xRandomBuffer = Random.Range(-1.5f, 1.5f);
+                    var yRandomBuffer = Random.Range(-.2f, .2f);
+                    await MoveToPoint(_gatherGoldPoint.position + new Vector3(xRandomBuffer, yRandomBuffer, 0f), token);
                     await UniTask.Delay(System.TimeSpan.FromSeconds(_mineTime), cancellationToken: token);
                     OnMiningCompleted.Invoke();
                 }
                 else
                 {
-                    await MoveToPoint(_guildPoint, token);
+                    await MoveToPoint(_guildPoint.position, token);
                     OnReachedGuild.Invoke();
                     await UniTask.Delay(System.TimeSpan.FromSeconds(_delayAtGuild), cancellationToken: token);
                 }
@@ -76,15 +78,15 @@ namespace _Project.Scripts.Gameplay.Units
             }
         }
 
-        private async UniTask MoveToPoint(Transform target, CancellationToken token)
+        private async UniTask MoveToPoint(Vector3 target, CancellationToken token)
         {
-            float dx = target.position.x - transform.position.x;
+            float dx = target.x - transform.position.x;
             if (Mathf.Abs(dx) > Mathf.Epsilon && _spriteRenderer != null)
                 _spriteRenderer.flipX = dx < 0f;
 
-            while (transform.position != target.position && !token.IsCancellationRequested)
+            while (transform.position != target && !token.IsCancellationRequested)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * _speedMultiplier * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target, _speed * _speedMultiplier * Time.deltaTime);
                 await UniTask.Yield(PlayerLoopTiming.Update, token);
             }
         }
