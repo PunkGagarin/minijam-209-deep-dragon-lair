@@ -36,12 +36,14 @@ namespace _Project.Scripts.Gameplay.EndGame
         {
             _audio.PlaySound(Sounds.buttonClick);
             _stateMachine.Enter<LoadGameplayState>();
+            _audio.PlayMusic(Sounds.bgm.ToString());
         }
 
         private void OnMenu()
         {
             _audio.PlaySound(Sounds.buttonClick);
             _stateMachine.Enter<MainMenuState>();
+            _audio.PlayMusic(Sounds.bgm.ToString());
         }
     }
 }

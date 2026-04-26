@@ -795,6 +795,9 @@ MonoBehaviour:
   _speed: 1
   _delayAtGuild: 3
   _spriteRenderer: {fileID: 0}
+  _animator: {fileID: 0}
+  _miningAnimationName: 
+  _walkAnimationName: 
 --- !u!1 &436624405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +2556,7 @@ MonoBehaviour:
   _animatedRoot: {fileID: 1905431101391656782}
   _animator: {fileID: 1905431101391656783}
   _animationStateName: Ending
-  _uiDelay: 3
+  _uiDelay: 2.5
 --- !u!1001 &1469765862
 PrefabInstance:
   m_ObjectHideFlags: 0

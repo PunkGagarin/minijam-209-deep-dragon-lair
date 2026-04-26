@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Project.Scripts.Audio.Domain;
 using _Project.Scripts.Gameplay.Currencies;
 using _Project.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Project.Scripts.Gameplay.GuildHall
 {
@@ -19,6 +21,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [SerializeField] private ShopButtonView _upgradeGemQuantityButton;
         [SerializeField] private List<Button> _closeButtons;
         [SerializeField] private List<ShopButtonView> _shopButtons;
+        
+        [Inject] private AudioService _audio;
 
         public ShopButtonView UpgradeGoldPerClickButton => _upgradeGoldPerClickButton;
         public ShopButtonView BuyUnitButton => _buyUnitButton;
@@ -33,7 +37,11 @@ namespace _Project.Scripts.Gameplay.GuildHall
         private void Awake()
         {
             foreach (Button closeButton in _closeButtons)
-                closeButton.onClick.AddListener(() => OnCloseClicked.Invoke());
+                closeButton.onClick.AddListener(() =>
+                {
+                    _audio.PlaySound(Sounds.buttonClick.ToString());
+                    OnCloseClicked.Invoke();
+                });
 
             Hide();
         }

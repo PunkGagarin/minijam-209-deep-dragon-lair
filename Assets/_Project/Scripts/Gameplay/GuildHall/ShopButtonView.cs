@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.Audio.Domain;
 using _Project.Scripts.Gameplay.Currencies;
 using DG.Tweening;
 using TMPro;
@@ -35,6 +36,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         private int _shakeVibrato = 20;
 
         [Inject] private CurrenciesRepository _currenciesRepository;
+        [Inject] private AudioService _audio;
 
         public CurrencyType Currency => _currency;
 
@@ -93,6 +95,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         public void PlayInsufficientFundsShake()
         {
+            _audio.PlaySound(Sounds.store_otmena.ToString());
             _shakeTween?.Kill(complete: true);
             _shakeTween = _button.transform.DOShakePosition(_shakeDuration, _shakeStrength, _shakeVibrato);
         }

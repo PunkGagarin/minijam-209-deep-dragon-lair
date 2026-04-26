@@ -1,4 +1,5 @@
-﻿using _Project.Scripts.Audio.Domain;
+﻿using System;
+using _Project.Scripts.Audio.Domain;
 using _Project.Scripts.Audio.View;
 using _Project.Scripts.Infrastructure.GameStates;
 using _Project.Scripts.Infrastructure.GameStates.States;
@@ -32,6 +33,11 @@ namespace _Project.Scripts
             _startGame.onClick.AddListener(StartGame);
             _settings.onClick.AddListener(OpenSettings);
             _credits.onClick.AddListener(OpenCredits);
+        }
+
+        private void Start()
+        {
+            _audio.PlayMusic(Sounds.bgm.ToString());
         }
 
         private void OnDestroy()
