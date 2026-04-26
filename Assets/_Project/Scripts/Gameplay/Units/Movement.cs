@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -11,6 +11,9 @@ namespace _Project.Scripts.Gameplay.Units
         [SerializeField] private float _speed = 3f;
         [SerializeField] private float _delayAtGuild = 1f;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Animator _animator;
+        [SerializeField] private string _miningAnimationName;
+        [SerializeField] private string _walkAnimationName;
 
         private Transform _guildPoint;
         private Transform _gatherGoldPoint;
@@ -85,7 +88,11 @@ namespace _Project.Scripts.Gameplay.Units
                         float yRandomBuffer = Random.Range(-0.2f, 0.2f);
                         Vector3 gatherOffset = new Vector3(xRandomBuffer, yRandomBuffer, 0f);
                         await MoveToPoint(() => _gatherGoldPoint.position + gatherOffset, token);
+                        if (_animator != null && !string.IsNullOrEmpty(_miningAnimationName)) 
+                            _animator.Play(_miningAnimationName);
                         await UniTask.Delay(TimeSpan.FromSeconds(_mineTime), cancellationToken: token);
+                        if (_animator != null && !string.IsNullOrEmpty(_walkAnimationName)) 
+                            _animator.Play(_walkAnimationName);
                         OnMiningCompleted.Invoke();
                     }
                     else
@@ -105,6 +112,8 @@ namespace _Project.Scripts.Gameplay.Units
 
         private async UniTask MoveToPoint(Func<Vector3> targetProvider, CancellationToken token)
         {
+            if (_animator != null && !string.IsNullOrEmpty(_walkAnimationName)) 
+                _animator.Play(_walkAnimationName);
             while (!token.IsCancellationRequested)
             {
                 Vector3 target = targetProvider.Invoke();

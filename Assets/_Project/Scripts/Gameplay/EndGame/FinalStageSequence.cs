@@ -22,10 +22,6 @@ namespace _Project.Scripts.Gameplay.EndGame
 
         public async UniTask PlayAsync(CancellationToken cancellationToken)
         {
-            /*//todo: finish me later
-            _endGameUi.Show();
-            return;*/
-            
             if (_isRunning)
                 return;
 
