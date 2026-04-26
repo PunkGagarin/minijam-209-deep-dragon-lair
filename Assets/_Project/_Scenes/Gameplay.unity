@@ -3374,6 +3374,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.35, y: 3.6910195}
   m_EdgeRadius: 0
+--- !u!1 &1867214400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6825797518473010706, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+  m_PrefabInstance: {fileID: 1905431101391656781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1867214402 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5899766731926193955, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+  m_PrefabInstance: {fileID: 1905431101391656781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867214404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867214400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28de1a1375cb4e33aceb620248e76d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Dragon.DragonAttackEvent
 --- !u!1 &1872424518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4194,6 +4216,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon
       objectReference: {fileID: 0}
+    - target: {fileID: 4905100216469417775, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4905100216469417775, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.44
+      objectReference: {fileID: 0}
     - target: {fileID: 5798471097651937229, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4238,10 +4268,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8200099874234797185, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1867214402}
+    - target: {fileID: 8200099874234797185, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+      propertyPath: _attackEvent
+      value: 
+      objectReference: {fileID: 1867214404}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6825797518473010706, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1867214404}
   m_SourcePrefab: {fileID: 100100000, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
 --- !u!1001 &1987158008028230667
 PrefabInstance:
@@ -4317,11 +4358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643748062093494792, guid: 92cb589b3a9604b488c5b282764ce786, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00012207031
+      value: -0.00024414062
       objectReference: {fileID: 0}
     - target: {fileID: 6643748062093494792, guid: 92cb589b3a9604b488c5b282764ce786, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -215.43219
+      value: -215.43213
       objectReference: {fileID: 0}
     - target: {fileID: 6643748062093494792, guid: 92cb589b3a9604b488c5b282764ce786, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4912,6 +4953,10 @@ PrefabInstance:
     - target: {fileID: 4121620493609681075, guid: abe6410d10922d84ead1d83eea8bbfa0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224037785337741332, guid: abe6410d10922d84ead1d83eea8bbfa0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -15.024902
       objectReference: {fileID: 0}
     - target: {fileID: 5345336989971744838, guid: abe6410d10922d84ead1d83eea8bbfa0, type: 3}
       propertyPath: m_AnchorMax.y
