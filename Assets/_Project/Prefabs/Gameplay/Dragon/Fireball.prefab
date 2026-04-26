@@ -104,5 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d91e163724950847bae832edb8d8518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Dragon.Fireball
-  _speed: 10
+  _speed: 11
   _explosionRadius: 2
