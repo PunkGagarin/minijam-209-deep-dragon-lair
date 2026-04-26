@@ -9,7 +9,7 @@
   <text key="PAUSE_POPUP_SETTINGS">Settings</text>
   <text key="PAUSE_POPUP_TITLE">Paused</text>
   <text key="CREDITS_POPUP_TITLE">Credits</text>
-  <text key="CREDITS_POPUP_DESC">@punkgagarin - Game Design, Programming</text>
+  <text key="CREDITS_POPUP_DESC">@punkgagarin - Game Design, Programming%%@Madgine_Solis - artist%%@K1wi_Zzz - artist</text>
   <text key="CREDITS_POPUP_CLOSE">Close</text>
   <text key="SETTINGS_AUDIO_TITLE">Audio</text>
   <text key="SETTINGS_AUDIO_MASTER_TITLE">Master</text>
@@ -20,4 +20,16 @@
   <text key="SETTINGS_LANG_EN">English</text>
   <text key="SETTINGS_CANCEL">Cancel</text>
   <text key="SETTINGS_OK">Apply</text>
+  <text key="GUILD">Guild</text>
+  <text key="SKILLS">Skills</text>
+  <text key="UNTIS_COUNT">Currently stealing:</text>
+  <text key="GOLD_PER_CLICK">Gold per click</text>
+  <text key="SPEED_MOVE">Move speed</text>
+  <text key="HIRE_A_UNIT">Hire a unit</text>
+  <text key="SHEAKY_SILENT">Sneaky silent</text>
+  <text key="GOLD_PER_UNIT_MOVE">Gold per unit move</text>
+  <text key="CLOSE">Close</text>
+  <text key="RETRY">Restart</text>
+  <text key="THANKS">Thanks for playing!</text>
+  <text key="MENU">Menu</text>
 </Language>

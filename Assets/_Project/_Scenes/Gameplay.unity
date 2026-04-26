@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.UnitsInstaller
   _spawner: {fileID: 332056764}
-  _unitView: {fileID: 0}
+  _unitView: {fileID: 1876919130}
   unitConfig: {fileID: 11400000, guid: 5e65d6d7be834e579a5ba91d0904b6cc, type: 2}
 --- !u!1 &519420028
 GameObject:
@@ -2919,9 +2919,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.EndGame.EndGameInstaller
   _ui: {fileID: 401850376}
-  _cameraReveal: {fileID: 0}
-  _finalStageSequence: {fileID: 0}
-  _stageProgressionConfig: {fileID: 0}
+  _cameraReveal: {fileID: 1872424520}
+  _finalStageSequence: {fileID: 1461526452}
+  _stageProgressionConfig: {fileID: 11400000, guid: aec5f0d539c449208fbfd7d5c4eebefa, type: 2}
 --- !u!1 &1535869294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3519,6 +3519,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6814099581894139395, guid: 0a51c24399ed8469eaada2bc8754f2b5, type: 3}
   m_PrefabInstance: {fileID: 1876919128}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1876919130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9056318206514343683, guid: 0a51c24399ed8469eaada2bc8754f2b5, type: 3}
+  m_PrefabInstance: {fileID: 1876919128}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f6e2a6f05b4f57b22eb1cf1c463e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.UnitView
 --- !u!1 &1882764967
 GameObject:
   m_ObjectHideFlags: 0

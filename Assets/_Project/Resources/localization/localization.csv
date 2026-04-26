@@ -8,7 +8,7 @@ PAUSE_POPUP_RETURN_TO_MAIN_MENU,Вернуться в меню,Return to menu
 PAUSE_POPUP_SETTINGS,Настройки,Settings
 PAUSE_POPUP_TITLE,Пауза,Paused
 CREDITS_POPUP_TITLE,Авторы,Credits
-CREDITS_POPUP_DESC,"@punkgagarin - Гейм дизайн, Программирование","@punkgagarin - Game Design, Programming"
+CREDITS_POPUP_DESC,"@punkgagarin - Гейм дизайн, Программирование%%@Madgine_Solis - художник%%@K1wi_Zzz - художник","@punkgagarin - Game Design, Programming%%@Madgine_Solis - artist%%@K1wi_Zzz - artist"
 CREDITS_POPUP_CLOSE,Закрыть,Close
 SETTINGS_AUDIO_TITLE,Аудио,Audio
 SETTINGS_AUDIO_MASTER_TITLE,Мастер,Master
@@ -19,3 +19,15 @@ SETTINGS_LANG_RU,Русский,Русский
 SETTINGS_LANG_EN,English,English
 SETTINGS_CANCEL,Отмена,Cancel
 SETTINGS_OK,Применить,Apply
+GUILD,Гильдия,Guild
+SKILLS,Навыки,Skills
+UNTIS_COUNT,Сейчас ворует:,Currently stealing:
+GOLD_PER_CLICK,Золота за клик,Gold per click
+SPEED_MOVE,Скорость ,Move speed
+HIRE_A_UNIT,Нанять вора,Hire a unit
+SHEAKY_SILENT,Громкость,Sneaky silent
+GOLD_PER_UNIT_MOVE,Золото за ходку,Gold per unit move
+CLOSE,Закрыть,Close
+RETRY,Повторить,Restart
+THANKS,Спасибо за игру!,Thanks for playing!
+MENU,В меню,Menu
