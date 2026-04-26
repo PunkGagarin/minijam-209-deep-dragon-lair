@@ -7,9 +7,12 @@ namespace _Project.Scripts.Gameplay.Units
     {
         private Movement _movement;
         private bool _isDead;
+        
+        [SerializeField]
+        private UnitType _unitType;
 
         public event System.Action<Unit> OnMiningCompleted = delegate { };
-        public event System.Action<Unit> OnReturnedToGuild = delegate { };
+        public event System.Action<Unit, UnitType> OnReturnedToGuild = delegate { };
         public event System.Action<Unit> OnDied = delegate { };
 
         private void Awake()
@@ -32,9 +35,9 @@ namespace _Project.Scripts.Gameplay.Units
             _movement.OnReachedGuild -= HandleReachedGuild;
         }
 
-        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime)
+        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime, float yCrowOffset = 0f)
         {
-            _movement.Initialize(guildPoint, gatherGoldPoint, mineTime);
+            _movement.Initialize(guildPoint, gatherGoldPoint, mineTime, yCrowOffset);
         }
 
         public void SetGatherPoint(Transform gatherGoldPoint)
@@ -54,6 +57,6 @@ namespace _Project.Scripts.Gameplay.Units
 
         private void HandleMiningCompleted() => OnMiningCompleted.Invoke(this);
 
-        private void HandleReachedGuild() => OnReturnedToGuild.Invoke(this);
+        private void HandleReachedGuild() => OnReturnedToGuild.Invoke(this, _unitType);
     }
 }

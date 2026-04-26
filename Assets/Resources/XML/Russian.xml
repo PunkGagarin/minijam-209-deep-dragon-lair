@@ -27,9 +27,13 @@
   <text key="SPEED_MOVE">Скорость</text>
   <text key="HIRE_A_UNIT">Нанять вора</text>
   <text key="SHEAKY_SILENT">Громкость</text>
-  <text key="GOLD_PER_UNIT_MOVE">Золото за ходку</text>
+  <text key="GOLD_PER_UNIT_MOVE">Золото юнита</text>
   <text key="CLOSE">Закрыть</text>
   <text key="RETRY">Повторить</text>
   <text key="THANKS">Спасибо за игру!</text>
   <text key="MENU">В меню</text>
+  <text key="UNIT_GEM_CHANCE">Шанс гема</text>
+  <text key="UNIT_GEM_AMOUNT">Кол-во гемов</text>
+  <text key="HIRE_CROW">Купить ворону</text>
+  <text key="GOLD_PER_CROW">Золото вороны</text>
 </Language>

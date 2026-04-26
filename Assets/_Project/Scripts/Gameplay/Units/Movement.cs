@@ -22,13 +22,14 @@ namespace _Project.Scripts.Gameplay.Units
         private bool _isGoingToGather = true;
         private float _mineTime;
         private float _speedMultiplier = 1f;
+        private float _yOffset = 1f;
 
         public void SetSpeedMultiplier(float multiplier) => _speedMultiplier = multiplier;
 
         public event Action OnMiningCompleted = delegate { };
         public event Action OnReachedGuild = delegate { };
 
-        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime)
+        public void Initialize(Transform guildPoint, Transform gatherGoldPoint, float mineTime, float yCrowOffset = 0f)
         {
             if (guildPoint == null || gatherGoldPoint == null)
             {
@@ -36,6 +37,7 @@ namespace _Project.Scripts.Gameplay.Units
                 return;
             }
 
+            _yOffset = yCrowOffset;
             _guildPoint = guildPoint;
             _gatherGoldPoint = gatherGoldPoint;
             _mineTime = mineTime;
@@ -85,7 +87,7 @@ namespace _Project.Scripts.Gameplay.Units
                     if (_isGoingToGather)
                     {
                         float xRandomBuffer = Random.Range(-1.5f, 1.5f);
-                        float yRandomBuffer = Random.Range(-0.2f, 0.2f);
+                        float yRandomBuffer = Random.Range(-0.2f, 0.2f) + _yOffset;
                         Vector3 gatherOffset = new Vector3(xRandomBuffer, yRandomBuffer, 0f);
                         await MoveToPoint(() => _gatherGoldPoint.position + gatherOffset, token);
                         if (_animator != null && !string.IsNullOrEmpty(_miningAnimationName)) 
@@ -97,7 +99,7 @@ namespace _Project.Scripts.Gameplay.Units
                     }
                     else
                     {
-                        await MoveToPoint(() => _guildPoint.position, token);
+                        await MoveToPoint(() => _guildPoint.position+ new Vector3(0, _yOffset, 0f), token);
                         OnReachedGuild.Invoke();
                         await UniTask.Delay(TimeSpan.FromSeconds(_delayAtGuild), cancellationToken: token);
                     }

@@ -38,5 +38,15 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [field: SerializeField] public int GemQuantityBaseCost { get; private set; } = 250;
         [field: SerializeField] public float GemQuantityCostMultiplier { get; private set; } = 2f;
         [field: SerializeField] public int GemQuantityBonusPerUpgrade { get; private set; } = 1;
+        
+        
+        [field: Header("Buy crow unit")]
+        [field: SerializeField] public int CrowUnitBaseCost { get; private set; } = 10;
+        [field: SerializeField] public float CrowUnitBaseCostMultiplier { get; private set; } = 1.5f;
+        
+        [field: Header("Crow gold")]
+        [field: SerializeField] public int CrowGoldBaseCost { get; private set; } = 30;
+        [field: SerializeField] public float CrowGoldCostMultiplier { get; private set; } = 1.6f;
+        [field: SerializeField] public int CrowGoldBonusPerUpgrade { get; private set; } = 1;
     }
 }
