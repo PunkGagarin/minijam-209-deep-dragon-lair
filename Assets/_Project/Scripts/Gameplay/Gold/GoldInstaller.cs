@@ -15,7 +15,7 @@ namespace _Project.Scripts.Gameplay.Gold
             Container.Bind<GoldModel>()
                 .FromNew().AsSingle();
 
-            Container.Bind<GoldService>()
+            Container.BindInterfacesAndSelfTo<GoldService>()
                 .FromNew().AsSingle();
 
             Container.Bind<GoldView>()

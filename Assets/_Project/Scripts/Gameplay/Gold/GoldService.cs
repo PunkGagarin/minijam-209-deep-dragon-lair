@@ -1,10 +1,13 @@
 using System;
+
+using _Project.Scripts.Gameplay.Currencies;
+
 using UnityEngine;
 using Zenject;
 
 namespace _Project.Scripts.Gameplay.Gold
 {
-    public class GoldService
+    public class GoldService : ICurrencyWallet
     {
         [Inject] private GoldModel _goldModel;
         [Inject] private GoldReserveService _reserve;

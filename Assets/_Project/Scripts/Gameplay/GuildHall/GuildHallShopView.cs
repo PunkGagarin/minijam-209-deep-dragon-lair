@@ -13,6 +13,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [SerializeField] private ShopButtonView _upgradeMoveSpeedButton;
         [SerializeField] private ShopButtonView _upgradeNoiseReductionButton;
         [SerializeField] private ShopButtonView _upgradeUnitGoldButton;
+        [SerializeField] private ShopButtonView _upgradeGemChanceButton;
+        [SerializeField] private ShopButtonView _upgradeGemQuantityButton;
         [SerializeField] private List<Button> _closeButtons;
 
         public ShopButtonView UpgradeGoldPerClickButton => _upgradeGoldPerClickButton;
@@ -20,6 +22,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
         public ShopButtonView UpgradeMoveSpeedButton => _upgradeMoveSpeedButton;
         public ShopButtonView UpgradeNoiseReductionButton => _upgradeNoiseReductionButton;
         public ShopButtonView UpgradeUnitGoldButton => _upgradeUnitGoldButton;
+        public ShopButtonView UpgradeGemChanceButton => _upgradeGemChanceButton;
+        public ShopButtonView UpgradeGemQuantityButton => _upgradeGemQuantityButton;
 
         public event Action OnCloseClicked = delegate { };
 

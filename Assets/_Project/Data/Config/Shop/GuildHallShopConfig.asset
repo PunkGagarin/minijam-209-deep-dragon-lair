@@ -16,7 +16,7 @@ MonoBehaviour:
   <CostMultiplier>k__BackingField: 3.5
   <BonusPerUpgrade>k__BackingField: 1
   <UnitBaseCost>k__BackingField: 20
-  <UnitCostMultiplier>k__BackingField: 2
+  <UnitCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15

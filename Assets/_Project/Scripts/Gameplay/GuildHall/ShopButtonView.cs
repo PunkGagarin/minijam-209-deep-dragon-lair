@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.Gameplay.Currencies;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -11,9 +12,12 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [SerializeField] private Button _button;
         [SerializeField] private TMP_Text _costText;
         [SerializeField] private TMP_Text _statText;
+        [SerializeField] private CurrencyType _currency;
         [SerializeField] private float _shakeDuration = 0.4f;
         [SerializeField] private float _shakeStrength = 10f;
         [SerializeField] private int _shakeVibrato = 20;
+
+        public CurrencyType Currency => _currency;
 
         public event Action OnClicked = delegate { };
 
