@@ -19,21 +19,23 @@ namespace _Project.Scripts.Gameplay.Dragon
         [Inject] private AnnoyanceService _service;
         [Inject] private AnnoyanceConfig _config;
         [Inject] private AnnoyanceView _view;
-        [Inject] private GoldPile _goldPile;
+        [Inject] private CaveGoldView _caveGoldView;
         [Inject] private UnitService _unitService;
 
         private readonly HashSet<Unit> _subscribed = new();
+        private GoldPile _subscribedPile;
         private CancellationTokenSource _cts;
 
         public void Initialize()
         {
             _cts = new CancellationTokenSource();
 
-            _goldPile.OnClicked += HandleGoldClicked;
+            _caveGoldView.OnActiveGoldPileChanged += HandleActiveGoldPileChanged;
             _unitService.OnChanged += SyncUnitSubscriptions;
             _service.OnChanged += UpdateView;
             _service.OnFilled += HandleFilled;
 
+            BindToGoldPile(_caveGoldView.ActiveGoldPile);
             SyncUnitSubscriptions();
             MovementTickLoop(_cts.Token).Forget();
             UpdateView();
@@ -48,8 +50,8 @@ namespace _Project.Scripts.Gameplay.Dragon
                 _cts = null;
             }
 
-            if (_goldPile != null)
-                _goldPile.OnClicked -= HandleGoldClicked;
+            _caveGoldView.OnActiveGoldPileChanged -= HandleActiveGoldPileChanged;
+            BindToGoldPile(null);
 
             if (_unitService != null)
                 _unitService.OnChanged -= SyncUnitSubscriptions;
@@ -66,6 +68,19 @@ namespace _Project.Scripts.Gameplay.Dragon
                     unit.OnMiningCompleted -= HandleUnitMiningCompleted;
             }
             _subscribed.Clear();
+        }
+
+        private void HandleActiveGoldPileChanged(GoldPile goldPile) => BindToGoldPile(goldPile);
+
+        private void BindToGoldPile(GoldPile goldPile)
+        {
+            if (_subscribedPile != null)
+                _subscribedPile.OnClicked -= HandleGoldClicked;
+
+            _subscribedPile = goldPile;
+
+            if (_subscribedPile != null)
+                _subscribedPile.OnClicked += HandleGoldClicked;
         }
 
         private void HandleGoldClicked(GoldPile _)
