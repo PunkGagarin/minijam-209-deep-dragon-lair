@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: UnitConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.UnitMiningConfig
   <BaseGoldPerTrip>k__BackingField: 5
+  <BaseCrowGoldPerTrip>k__BackingField: 20
   <MineTime>k__BackingField: 2

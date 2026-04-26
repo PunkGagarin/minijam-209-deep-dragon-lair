@@ -10,6 +10,8 @@ namespace _Project.Scripts.Gameplay.Dragon
     {
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private Fireball _fireballPrefab;
+        [SerializeField] private DragonAttackEvent _attackEvent;
+        [SerializeField] private Animator _animator;
 
         [Inject] private AnnoyanceService _annoyance;
         [Inject] private UnitService _units;
@@ -17,13 +19,15 @@ namespace _Project.Scripts.Gameplay.Dragon
 
         private void OnEnable()
         {
-            _annoyance.OnFilled += HandleFilled;
+            _annoyance.OnFilled += StartAttacKAnimation;
+            _attackEvent.OnAttack += SpitFireball;
         }
 
         private void OnDisable()
         {
             if (_annoyance != null)
-                _annoyance.OnFilled -= HandleFilled;
+                _annoyance.OnFilled -= StartAttacKAnimation;
+            _attackEvent.OnAttack -= SpitFireball;
         }
 
         public void SpitFireball()
@@ -44,7 +48,7 @@ namespace _Project.Scripts.Gameplay.Dragon
             fireball.Launch(targetPoint);
         }
 
-        private void HandleFilled() => SpitFireball();
+        private void StartAttacKAnimation() => _animator.Play("Attack");
 
         private Unit FindNearestUnit()
         {

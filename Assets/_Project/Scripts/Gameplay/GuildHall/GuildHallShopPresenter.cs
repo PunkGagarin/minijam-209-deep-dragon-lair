@@ -131,7 +131,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         {
             if (_gemService.CurrentAmount < _unitService.CurrentCrowCost)
             {
-                _shopView.BuyUnitButton.PlayInsufficientFundsShake();
+                _shopView.BuyCrowButton.PlayInsufficientFundsShake();
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         {
             if (!_gemService.TrySpend(CurrentCrowGoldCost))
             {
-                _shopView.UpgradeUnitGoldButton.PlayInsufficientFundsShake();
+                _shopView.CrowGoldButton.PlayInsufficientFundsShake();
                 return;
             }
 
