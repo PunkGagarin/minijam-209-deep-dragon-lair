@@ -9,7 +9,7 @@
   <text key="PAUSE_POPUP_SETTINGS">Настройки</text>
   <text key="PAUSE_POPUP_TITLE">Пауза</text>
   <text key="CREDITS_POPUP_TITLE">Авторы</text>
-  <text key="CREDITS_POPUP_DESC">@punkgagarin - Гейм дизайн, Программирование</text>
+  <text key="CREDITS_POPUP_DESC">@punkgagarin - Гейм дизайн, Программирование%%@Madgine_Solis - художник%%@K1wi_Zzz - художник</text>
   <text key="CREDITS_POPUP_CLOSE">Закрыть</text>
   <text key="SETTINGS_AUDIO_TITLE">Аудио</text>
   <text key="SETTINGS_AUDIO_MASTER_TITLE">Мастер</text>
@@ -20,4 +20,16 @@
   <text key="SETTINGS_LANG_EN">English</text>
   <text key="SETTINGS_CANCEL">Отмена</text>
   <text key="SETTINGS_OK">Применить</text>
+  <text key="GUILD">Гильдия</text>
+  <text key="SKILLS">Навыки</text>
+  <text key="UNTIS_COUNT">Сейчас ворует:</text>
+  <text key="GOLD_PER_CLICK">Золота за клик</text>
+  <text key="SPEED_MOVE">Скорость</text>
+  <text key="HIRE_A_UNIT">Нанять вора</text>
+  <text key="SHEAKY_SILENT">Громкость</text>
+  <text key="GOLD_PER_UNIT_MOVE">Золото за ходку</text>
+  <text key="CLOSE">Закрыть</text>
+  <text key="RETRY">Повторить</text>
+  <text key="THANKS">Спасибо за игру!</text>
+  <text key="MENU">В меню</text>
 </Language>
