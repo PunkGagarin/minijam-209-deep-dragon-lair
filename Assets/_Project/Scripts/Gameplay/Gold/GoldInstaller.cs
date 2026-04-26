@@ -8,6 +8,8 @@ namespace _Project.Scripts.Gameplay.Gold
     {
         [SerializeField] private GoldView _goldView;
         [SerializeField] private GoldPile _goldPile;
+        [SerializeField] private GoldReserveView _reserveView;
+        [SerializeField] private GoldReserveConfig _reserveConfig;
 
         public override void InstallBindings()
         {
@@ -24,6 +26,21 @@ namespace _Project.Scripts.Gameplay.Gold
                 .FromInstance(_goldPile).AsSingle();
 
             Container.BindInterfacesAndSelfTo<GoldPresenter>()
+                .FromNew().AsSingle().NonLazy();
+
+            Container.Bind<GoldReserveConfig>()
+                .FromInstance(_reserveConfig).AsSingle();
+
+            Container.Bind<GoldReserveModel>()
+                .FromNew().AsSingle();
+
+            Container.Bind<GoldReserveView>()
+                .FromInstance(_reserveView).AsSingle();
+
+            Container.BindInterfacesAndSelfTo<GoldReserveService>()
+                .FromNew().AsSingle().NonLazy();
+
+            Container.BindInterfacesAndSelfTo<GoldReservePresenter>()
                 .FromNew().AsSingle().NonLazy();
         }
     }
