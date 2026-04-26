@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 70af7c1ce11404775b7935a487fa1ada
+guid: 9340e7fd0605944e8bc3fb742ad1c640
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6762012082815764069
-    second: crodetsya_0
+      213: -5209508558106278373
+    second: gold3_0
   - first:
-      213: 8534530283870309428
-    second: crodetsya_1
+      213: 5103196689318659073
+    second: gold3_1
   - first:
-      213: 364642549139051631
-    second: crodetsya_2
+      213: 2800728109983947209
+    second: gold3_2
   - first:
-      213: 3352198665098129576
-    second: crodetsya_3
+      213: 5201408732712063140
+    second: gold3_3
+  - first:
+      213: 5467217108669015888
+    second: gold3_4
+  - first:
+      213: -1014597190152047457
+    second: gold3_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,89 +128,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crodetsya_0
+      name: gold3_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 4
-        width: 55
-        height: 82
+        x: 1511
+        y: 264
+        width: 11
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b99fddc56d18822a0800000000000000
-      internalID: -6762012082815764069
+      spriteID: b16c7bb419b14b7b0800000000000000
+      internalID: -5209508558106278373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crodetsya_1
+      name: gold3_1
       rect:
         serializedVersion: 2
-        x: 93
-        y: 3
-        width: 68
-        height: 84
+        x: 1521
+        y: 268
+        width: 10
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43c47e6431eb07670800000000000000
-      internalID: 8534530283870309428
+      spriteID: 104c9cdd95232d640800000000000000
+      internalID: 5103196689318659073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crodetsya_2
+      name: gold3_2
       rect:
         serializedVersion: 2
-        x: 208
-        y: 3
-        width: 55
-        height: 82
+        x: 1587
+        y: 260
+        width: 14
+        height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f641d6b67787f0500800000000000000
-      internalID: 364642549139051631
+      spriteID: 9c95b0c806f2ed620800000000000000
+      internalID: 2800728109983947209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: crodetsya_3
+      name: gold3_3
       rect:
         serializedVersion: 2
-        x: 296
-        y: 2
-        width: 68
-        height: 84
+        x: 1917
+        y: 9
+        width: 1923
+        height: 748
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a076b9dce6658e20800000000000000
-      internalID: 3352198665098129576
+      spriteID: 4a0dae42fad1f2840800000000000000
+      internalID: 5201408732712063140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold3_4
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 157
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 057a7286ef47fdb40800000000000000
+      internalID: 5467217108669015888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gold3_5
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 73
+        width: 86
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94b0ea2b3d6be1f0800000000000000
+      internalID: -1014597190152047457
       vertices: []
       indices: 
       edges: []
@@ -213,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5ada09cb95c3542609fe8e3b8dd9894a
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -221,14 +271,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      crodetsya_0: -6762012082815764069
-      crodetsya_1: 8534530283870309428
-      crodetsya_2: 364642549139051631
-      crodetsya_3: 3352198665098129576
+      gold3_0: -5209508558106278373
+      gold3_1: 5103196689318659073
+      gold3_2: 2800728109983947209
+      gold3_3: 5201408732712063140
+      gold3_4: 5467217108669015888
+      gold3_5: -1014597190152047457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

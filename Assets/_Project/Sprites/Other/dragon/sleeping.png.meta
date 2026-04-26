@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c0c2593c7c8404580b889ff683b8b428
+guid: f40075e41f14b409597dc6851e49c741
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3746267851424270928
-    second: minijam_0
+      213: 2375338981706225314
+    second: sleeping_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: minijam_0
+      name: sleeping_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 1
-        width: 49
-        height: 83
+        x: 50
+        y: 8
+        width: 517
+        height: 395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b5f36adc35920cc0800000000000000
-      internalID: -3746267851424270928
+      spriteID: 2a6dcb10836e6f020800000000000000
+      internalID: 2375338981706225314
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      minijam_0: -3746267851424270928
+      sleeping_0: 2375338981706225314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
