@@ -6,6 +6,7 @@ namespace _Project.Scripts.Gameplay.Units
     public class UnitConfig : ScriptableObject
     {
         [field: SerializeField] public int BaseGoldPerTrip { get; private set; } = 5;
+        [field: SerializeField] public int BaseCrowGoldPerTrip { get; private set; } = 25;
         [field: SerializeField] public float MineTime { get; private set; } = 2f;
     }
 }

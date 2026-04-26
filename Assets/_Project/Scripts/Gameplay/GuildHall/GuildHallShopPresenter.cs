@@ -28,6 +28,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         private int _unitGoldUpgradeLevel = 0;
         private int _gemChanceUpgradeLevel = 0;
         private int _gemQuantityUpgradeLevel = 0;
+        private int _crowGoldUpgradeLevel = 0;
 
         private bool _gemUpgradesUnlocked;
 
@@ -48,6 +49,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         private int CurrentGemQuantityCost =>
             Mathf.RoundToInt(_config.GemQuantityBaseCost * Mathf.Pow(_config.GemQuantityCostMultiplier, _gemQuantityUpgradeLevel));
+        private int CurrentCrowGoldCost =>
+            Mathf.RoundToInt(_config.CrowGoldBaseCost * Mathf.Pow(_config.CrowGoldCostMultiplier, _crowGoldUpgradeLevel));
 
         public void Initialize()
         {
@@ -59,6 +62,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeUnitGoldButton.OnClicked += HandleUpgradeUnitGold;
             _shopView.UpgradeGemChanceButton.OnClicked += HandleUpgradeGemChance;
             _shopView.UpgradeGemQuantityButton.OnClicked += HandleUpgradeGemQuantity;
+            _shopView.BuyCrowButton.OnClicked += HandleBuyCrow;
+            _shopView.CrowGoldButton.OnClicked += HandleUpgradeCrowGold;
             _shopView.OnCloseClicked += HandleClose;
             _goldService.OnAmountChanged += UpdateView;
             _unitService.OnChanged += UpdateView;
@@ -107,13 +112,24 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
         private void HandleBuyUnit()
         {
-            if (_goldService.CurrentAmount < _unitService.CurrentCost)
+            if (_goldService.CurrentAmount < _unitService.CurrentUnitCost)
             {
                 _shopView.BuyUnitButton.PlayInsufficientFundsShake();
                 return;
             }
 
             _unitService.TryPurchaseUnit();
+        }
+        
+        private void HandleBuyCrow()
+        {
+            if (_gemService.CurrentAmount < _unitService.CurrentCrowCost)
+            {
+                _shopView.BuyUnitButton.PlayInsufficientFundsShake();
+                return;
+            }
+
+            _unitService.TryPurchaseCrow();
         }
 
         private void HandleUpgradeMoveSpeed()
@@ -152,6 +168,19 @@ namespace _Project.Scripts.Gameplay.GuildHall
 
             _unitGoldUpgradeLevel++;
             _unitService.UpgradeGoldPerTrip(_config.UnitGoldBonusPerUpgrade);
+            UpdateView();
+        }
+        
+        private void HandleUpgradeCrowGold()
+        {
+            if (!_gemService.TrySpend(CurrentCrowGoldCost))
+            {
+                _shopView.UpgradeUnitGoldButton.PlayInsufficientFundsShake();
+                return;
+            }
+
+            _crowGoldUpgradeLevel++;
+            _unitService.UpgradeGoldPerCrowTrip(_config.CrowGoldBonusPerUpgrade);
             UpdateView();
         }
 
@@ -202,9 +231,9 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeGoldPerClickButton.SetAppearance(_goldService.CurrentAmount >= CurrentCost);
 
             _shopView.BuyUnitButton.SetStatText(_unitService.Count.ToString());
-            _shopView.BuyUnitButton.SetCostText(_unitService.CurrentCost);
+            _shopView.BuyUnitButton.SetCostText(_unitService.CurrentUnitCost);
             _shopView.BuyUnitButton.SetAppearance(
-                _unitService.CanPurchaseUnit && _goldService.CurrentAmount >= _unitService.CurrentCost);
+                _unitService.CanPurchaseUnit && _goldService.CurrentAmount >= _unitService.CurrentUnitCost);
 
             _shopView.UpgradeMoveSpeedButton.SetStatText($"x{_unitService.MoveSpeedMultiplier:0.00}");
             _shopView.UpgradeMoveSpeedButton.SetCostText(CurrentMoveSpeedCost);
@@ -225,6 +254,14 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeGemQuantityButton.SetStatText($"+{_unitService.GemDropAmount}");
             _shopView.UpgradeGemQuantityButton.SetCostText(CurrentGemQuantityCost);
             _shopView.UpgradeGemQuantityButton.SetAppearance(GetAmountVia(_shopView.UpgradeGemQuantityButton) >= CurrentGemQuantityCost);
+            
+            _shopView.BuyCrowButton.SetStatText(_unitService.CrowCount.ToString());
+            _shopView.BuyCrowButton.SetCostText(_unitService.CurrentCrowCost);
+            _shopView.BuyCrowButton.SetAppearance(_gemService.CurrentAmount >= _unitService.CurrentCrowCost);
+            
+            _shopView.CrowGoldButton.SetStatText($"+{_unitService.GoldPerCrowTripBonus}");
+            _shopView.CrowGoldButton.SetCostText(CurrentCrowGoldCost);
+            _shopView.CrowGoldButton.SetAppearance(_gemService.CurrentAmount >= CurrentCrowGoldCost);
         }
     }
 }

@@ -8,7 +8,7 @@ PAUSE_POPUP_RETURN_TO_MAIN_MENU,Вернуться в меню,Return to menu
 PAUSE_POPUP_SETTINGS,Настройки,Settings
 PAUSE_POPUP_TITLE,Пауза,Paused
 CREDITS_POPUP_TITLE,Авторы,Credits
-CREDITS_POPUP_DESC,"@punkgagarin - Гейм дизайн, Программирование%%@Madgine_Solis - художник%%@K1wi_Zzz - художник","@punkgagarin - Game Design, Programming%%@Madgine_Solis - artist%%@K1wi_Zzz - artist"
+CREDITS_POPUP_DESC,"@punkgagarin - Гейм дизайн, Программирование%%@Madgine_Solis - художник%%@K1wi_Zzz - художник","@punkgagarin - Game Design, Programming%%@Madgine_Solis - artist%%@K1wi_Zzz - ui designer"
 CREDITS_POPUP_CLOSE,Закрыть,Close
 SETTINGS_AUDIO_TITLE,Аудио,Audio
 SETTINGS_AUDIO_MASTER_TITLE,Мастер,Master
@@ -26,8 +26,12 @@ GOLD_PER_CLICK,Золота за клик,Gold per click
 SPEED_MOVE,Скорость ,Move speed
 HIRE_A_UNIT,Нанять вора,Hire a unit
 SHEAKY_SILENT,Громкость,Sneaky silent
-GOLD_PER_UNIT_MOVE,Золото за ходку,Gold per unit move
+GOLD_PER_UNIT_MOVE,Золото юнита,Gold per unit
 CLOSE,Закрыть,Close
 RETRY,Повторить,Restart
 THANKS,Спасибо за игру!,Thanks for playing!
 MENU,В меню,Menu
+UNIT_GEM_CHANCE,Шанс гема,Gem chance
+UNIT_GEM_AMOUNT,Кол-во гемов,Gem amount
+HIRE_CROW,Купить ворону,Buy crow
+GOLD_PER_CROW,Золото вороны,Crow gold
