@@ -16,7 +16,7 @@ MonoBehaviour:
   <CostMultiplier>k__BackingField: 3.5
   <BonusPerUpgrade>k__BackingField: 1
   <UnitBaseCost>k__BackingField: 20
-  <UnitCostMultiplier>k__BackingField: 2
+  <UnitCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15
@@ -26,3 +26,9 @@ MonoBehaviour:
   <UnitGoldBaseCost>k__BackingField: 60
   <UnitGoldCostMultiplier>k__BackingField: 3
   <UnitGoldBonusPerUpgrade>k__BackingField: 5
+  <GemChanceBaseCost>k__BackingField: 100
+  <GemChanceCostMultiplier>k__BackingField: 1.8
+  <GemChanceBonusPerUpgrade>k__BackingField: 0.02
+  <GemQuantityBaseCost>k__BackingField: 5
+  <GemQuantityCostMultiplier>k__BackingField: 2
+  <GemQuantityBonusPerUpgrade>k__BackingField: 1

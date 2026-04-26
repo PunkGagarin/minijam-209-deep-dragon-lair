@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+using _Project.Scripts.Gameplay.Gem;
 using _Project.Scripts.Gameplay.GuildHall;
 using _Project.Scripts.Gameplay.Gold;
 
@@ -16,10 +17,12 @@ namespace _Project.Scripts.Gameplay.Units
         [Inject] private GuildHallShopConfig _shopConfig;
         [Inject] private UnitConfig _unitConfig;
         [Inject] private GoldService _goldService;
+        [Inject] private GemService _gemService;
 
         private readonly List<Unit> _units = new();
 
         public event Action OnChanged = delegate { };
+        public event Action<Unit, int> OnGemDropped = delegate { };
 
         public IReadOnlyList<Unit> Units => _units;
         public int Count => _units.Count;
@@ -28,6 +31,8 @@ namespace _Project.Scripts.Gameplay.Units
 
         public float MoveSpeedMultiplier { get; private set; } = 1f;
         public int GoldPerTripBonus { get; private set; } = 0;
+        public float GemDropChance { get; private set; } = 0f;
+        public int GemDropAmount { get; private set; } = 1;
 
         public bool CanPurchaseUnit => _spawner.CanSpawn;
 
@@ -58,6 +63,10 @@ namespace _Project.Scripts.Gameplay.Units
 
         public void UpgradeGoldPerTrip(int bonus) => GoldPerTripBonus += bonus;
 
+        public void UpgradeGemDropChance(float delta) => GemDropChance = Mathf.Clamp01(GemDropChance + delta);
+
+        public void UpgradeGemDropAmount(int delta) => GemDropAmount += delta;
+
         public void SetGatherPoint(Transform gatherPoint)
         {
             if (gatherPoint == null)
@@ -78,6 +87,12 @@ namespace _Project.Scripts.Gameplay.Units
         private void HandleUnitReturnedToGuild(Unit unit)
         {
             _goldService.CollectFromUnit(_unitConfig.BaseGoldPerTrip + GoldPerTripBonus);
+
+            if (GemDropChance <= 0f || UnityEngine.Random.value >= GemDropChance)
+                return;
+
+            _gemService.CollectFromUnit(GemDropAmount);
+            OnGemDropped.Invoke(unit, GemDropAmount);
         }
 
         private void HandleUnitDied(Unit unit)

@@ -42,7 +42,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 3000
+  - <RequiredGold>k__BackingField: 2000
     <IsFinalStage>k__BackingField: 0
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 6.5
@@ -71,7 +71,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 9000
+  - <RequiredGold>k__BackingField: 4500
     <IsFinalStage>k__BackingField: 0
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 8
@@ -100,7 +100,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 27000
+  - <RequiredGold>k__BackingField: 9000
     <IsFinalStage>k__BackingField: 0
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 9
@@ -129,7 +129,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 80000
+  - <RequiredGold>k__BackingField: 20000
     <IsFinalStage>k__BackingField: 1
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 10.5
@@ -158,7 +158,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 120000
+  - <RequiredGold>k__BackingField: 40000
     <IsFinalStage>k__BackingField: 1
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 10.5

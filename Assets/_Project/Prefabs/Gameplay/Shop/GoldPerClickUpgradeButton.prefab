@@ -566,6 +566,8 @@ MonoBehaviour:
   _button: {fileID: 461946749383303007}
   _costText: {fileID: 2546069479109643192}
   _statText: {fileID: 8244380717587456798}
+  _currencyIcon: {fileID: 3391772461968648665}
+  _currency: 0
   _shakeDuration: 0.4
   _shakeStrength: 10
   _shakeVibrato: 20

@@ -1,4 +1,8 @@
+using System;
+
+using _Project.Scripts.Gameplay.Currencies;
 using _Project.Scripts.Gameplay.Dragon;
+using _Project.Scripts.Gameplay.Gem;
 using _Project.Scripts.Gameplay.Gold;
 using _Project.Scripts.Gameplay.Units;
 
@@ -16,11 +20,16 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [Inject] private GuildHallShopConfig _config;
         [Inject] private UnitService _unitService;
         [Inject] private AnnoyanceService _annoyanceService;
+        [Inject] private GemService _gemService;
 
         private int _goldPerClickUpgradeLevel = 0;
         private int _moveSpeedUpgradeLevel = 0;
         private int _noiseReductionUpgradeLevel = 0;
         private int _unitGoldUpgradeLevel = 0;
+        private int _gemChanceUpgradeLevel = 0;
+        private int _gemQuantityUpgradeLevel = 0;
+
+        private bool _gemUpgradesUnlocked;
 
         private int CurrentCost =>
             Mathf.RoundToInt(_config.BaseCost * Mathf.Pow(_config.CostMultiplier, _goldPerClickUpgradeLevel));
@@ -34,6 +43,12 @@ namespace _Project.Scripts.Gameplay.GuildHall
         private int CurrentUnitGoldCost =>
             Mathf.RoundToInt(_config.UnitGoldBaseCost * Mathf.Pow(_config.UnitGoldCostMultiplier, _unitGoldUpgradeLevel));
 
+        private int CurrentGemChanceCost =>
+            Mathf.RoundToInt(_config.GemChanceBaseCost * Mathf.Pow(_config.GemChanceCostMultiplier, _gemChanceUpgradeLevel));
+
+        private int CurrentGemQuantityCost =>
+            Mathf.RoundToInt(_config.GemQuantityBaseCost * Mathf.Pow(_config.GemQuantityCostMultiplier, _gemQuantityUpgradeLevel));
+
         public void Initialize()
         {
             _guildHall.OnClicked += HandleBuildingClicked;
@@ -42,11 +57,35 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeMoveSpeedButton.OnClicked += HandleUpgradeMoveSpeed;
             _shopView.UpgradeNoiseReductionButton.OnClicked += HandleUpgradeNoiseReduction;
             _shopView.UpgradeUnitGoldButton.OnClicked += HandleUpgradeUnitGold;
+            _shopView.UpgradeGemChanceButton.OnClicked += HandleUpgradeGemChance;
+            _shopView.UpgradeGemQuantityButton.OnClicked += HandleUpgradeGemQuantity;
             _shopView.OnCloseClicked += HandleClose;
             _goldService.OnAmountChanged += UpdateView;
             _unitService.OnChanged += UpdateView;
 
+            _gemService.OnAmountChanged += HandleGemAmountChanged;
+            ApplyGemUnlockState();
+
             UpdateView();
+        }
+
+        private void HandleGemAmountChanged()
+        {
+            if (_gemUpgradesUnlocked || _gemService.CurrentAmount <= 0)
+                return;
+
+            ApplyGemUnlockState();
+            UpdateView();
+        }
+
+        private void ApplyGemUnlockState()
+        {
+            _gemUpgradesUnlocked = _gemService.CurrentAmount > 0;
+
+            foreach (var button in _shopView.GetButtonsByCurrency(CurrencyType.Gem))
+            {
+                button.gameObject.SetActive(_gemService.CurrentAmount > 0);
+            }
         }
 
         private void HandleBuildingClicked(GuildHall _) => _shopView.Show();
@@ -116,6 +155,46 @@ namespace _Project.Scripts.Gameplay.GuildHall
             UpdateView();
         }
 
+        private void HandleUpgradeGemChance()
+        {
+            if (!TrySpendVia(_shopView.UpgradeGemChanceButton, CurrentGemChanceCost))
+            {
+                _shopView.UpgradeGemChanceButton.PlayInsufficientFundsShake();
+                return;
+            }
+
+            _gemChanceUpgradeLevel++;
+            _unitService.UpgradeGemDropChance(_config.GemChanceBonusPerUpgrade);
+            UpdateView();
+        }
+
+        private void HandleUpgradeGemQuantity()
+        {
+            if (!TrySpendVia(_shopView.UpgradeGemQuantityButton, CurrentGemQuantityCost))
+            {
+                _shopView.UpgradeGemQuantityButton.PlayInsufficientFundsShake();
+                return;
+            }
+
+            _gemQuantityUpgradeLevel++;
+            _unitService.UpgradeGemDropAmount(_config.GemQuantityBonusPerUpgrade);
+            UpdateView();
+        }
+
+        private bool TrySpendVia(ShopButtonView button, int amount) => button.Currency switch
+        {
+            CurrencyType.Gold => _goldService.TrySpend(amount),
+            CurrencyType.Gem => _gemService.TrySpend(amount),
+            _ => throw new ArgumentOutOfRangeException(nameof(button), button.Currency, null),
+        };
+
+        private int GetAmountVia(ShopButtonView button) => button.Currency switch
+        {
+            CurrencyType.Gold => _goldService.CurrentAmount,
+            CurrencyType.Gem => _gemService.CurrentAmount,
+            _ => throw new ArgumentOutOfRangeException(nameof(button), button.Currency, null),
+        };
+
         private void UpdateView()
         {
             _shopView.UpgradeGoldPerClickButton.SetStatText($"+{_goldService.CurrentBonusPerClick + 1}");
@@ -138,6 +217,14 @@ namespace _Project.Scripts.Gameplay.GuildHall
             _shopView.UpgradeUnitGoldButton.SetStatText($"+{_unitService.GoldPerTripBonus}");
             _shopView.UpgradeUnitGoldButton.SetCostText(CurrentUnitGoldCost);
             _shopView.UpgradeUnitGoldButton.SetAppearance(_goldService.CurrentAmount >= CurrentUnitGoldCost);
+
+            _shopView.UpgradeGemChanceButton.SetStatText($"{_unitService.GemDropChance * 100f:0}%");
+            _shopView.UpgradeGemChanceButton.SetCostText(CurrentGemChanceCost);
+            _shopView.UpgradeGemChanceButton.SetAppearance(GetAmountVia(_shopView.UpgradeGemChanceButton) >= CurrentGemChanceCost);
+
+            _shopView.UpgradeGemQuantityButton.SetStatText($"+{_unitService.GemDropAmount}");
+            _shopView.UpgradeGemQuantityButton.SetCostText(CurrentGemQuantityCost);
+            _shopView.UpgradeGemQuantityButton.SetAppearance(GetAmountVia(_shopView.UpgradeGemQuantityButton) >= CurrentGemQuantityCost);
         }
     }
 }
