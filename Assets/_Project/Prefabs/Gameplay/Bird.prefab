@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3388948256117232840}
   - component: {fileID: 7225088739359248477}
   - component: {fileID: 3785942396920444544}
+  - component: {fileID: 5646037562793782459}
+  - component: {fileID: 5797850113390841564}
   m_Layer: 0
   m_Name: Bird
   m_TagString: Untagged
@@ -114,3 +116,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5646037562793782459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690945971523286501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b72cfca376e4b7d80b1ff6eb6e84d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Movement
+  _speed: 2
+  _delayAtGuild: 1
+  _spriteRenderer: {fileID: 7225088739359248477}
+--- !u!114 &5797850113390841564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690945971523286501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6352db322d25e4244b40fb29f1b9af5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Unit
+  _unitType: 0

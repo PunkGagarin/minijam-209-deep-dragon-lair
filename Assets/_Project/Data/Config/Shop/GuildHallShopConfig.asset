@@ -12,23 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b59cc6efee6ab94b8424c9ec9ef3991, type: 3}
   m_Name: GuildHallShopConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.GuildHall.GuildHallShopConfig
-  <BaseCost>k__BackingField: 30
+  <BaseCost>k__BackingField: 20
   <CostMultiplier>k__BackingField: 3.5
   <BonusPerUpgrade>k__BackingField: 1
-  <UnitBaseCost>k__BackingField: 20
+  <UnitBaseCost>k__BackingField: 25
   <UnitCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15
-  <NoiseReductionBaseCost>k__BackingField: 300
+  <NoiseReductionBaseCost>k__BackingField: 250
   <NoiseReductionCostMultiplier>k__BackingField: 2
   <NoiseReductionPerUpgrade>k__BackingField: 0.1
   <UnitGoldBaseCost>k__BackingField: 60
   <UnitGoldCostMultiplier>k__BackingField: 3
   <UnitGoldBonusPerUpgrade>k__BackingField: 5
-  <GemChanceBaseCost>k__BackingField: 100
-  <GemChanceCostMultiplier>k__BackingField: 1.8
-  <GemChanceBonusPerUpgrade>k__BackingField: 0.02
+  <GemChanceBaseCost>k__BackingField: 300
+  <GemChanceCostMultiplier>k__BackingField: 2
+  <GemChanceBonusPerUpgrade>k__BackingField: 0.2
   <GemQuantityBaseCost>k__BackingField: 5
   <GemQuantityCostMultiplier>k__BackingField: 2
   <GemQuantityBonusPerUpgrade>k__BackingField: 1
+  <CrowUnitBaseCost>k__BackingField: 10
+  <CrowUnitBaseCostMultiplier>k__BackingField: 2
+  <CrowGoldBaseCost>k__BackingField: 30
+  <CrowGoldCostMultiplier>k__BackingField: 1.6
+  <CrowGoldBonusPerUpgrade>k__BackingField: 1
