@@ -100,6 +100,9 @@ namespace _Project.Scripts.Gameplay.Units
 
             foreach (Unit unit in _units)
                 unit.SetGatherPoint(gatherPoint);
+            
+            foreach (Unit unit in _crows)
+                unit.SetGatherPoint(gatherPoint);
         }
 
         private void SubscribeToUnit(Unit unit, UnitType unitType)
