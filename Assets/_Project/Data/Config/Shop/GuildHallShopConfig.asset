@@ -16,7 +16,7 @@ MonoBehaviour:
   <CostMultiplier>k__BackingField: 3.5
   <BonusPerUpgrade>k__BackingField: 1
   <UnitBaseCost>k__BackingField: 25
-  <UnitCostMultiplier>k__BackingField: 1.7
+  <UnitCostMultiplier>k__BackingField: 1.4
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15
@@ -24,7 +24,7 @@ MonoBehaviour:
   <NoiseReductionCostMultiplier>k__BackingField: 2
   <NoiseReductionPerUpgrade>k__BackingField: 0.1
   <UnitGoldBaseCost>k__BackingField: 60
-  <UnitGoldCostMultiplier>k__BackingField: 3
+  <UnitGoldCostMultiplier>k__BackingField: 2.5
   <UnitGoldBonusPerUpgrade>k__BackingField: 5
   <GemChanceBaseCost>k__BackingField: 300
   <GemChanceCostMultiplier>k__BackingField: 2
@@ -33,7 +33,7 @@ MonoBehaviour:
   <GemQuantityCostMultiplier>k__BackingField: 2
   <GemQuantityBonusPerUpgrade>k__BackingField: 1
   <CrowUnitBaseCost>k__BackingField: 10
-  <CrowUnitBaseCostMultiplier>k__BackingField: 2
-  <CrowGoldBaseCost>k__BackingField: 30
+  <CrowUnitBaseCostMultiplier>k__BackingField: 1.7
+  <CrowGoldBaseCost>k__BackingField: 20
   <CrowGoldCostMultiplier>k__BackingField: 1.6
-  <CrowGoldBonusPerUpgrade>k__BackingField: 1
+  <CrowGoldBonusPerUpgrade>k__BackingField: 10

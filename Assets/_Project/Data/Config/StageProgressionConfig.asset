@@ -158,7 +158,7 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-  - <RequiredGold>k__BackingField: 40000
+  - <RequiredGold>k__BackingField: 50000
     <IsFinalStage>k__BackingField: 1
     <CameraSettings>k__BackingField:
       <TargetOrthographicSize>k__BackingField: 10.5

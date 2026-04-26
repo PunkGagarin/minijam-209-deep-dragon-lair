@@ -76,6 +76,8 @@ namespace _Project.Scripts.Gameplay.Stages
             if (currentStage.IsFinalStage)
             {
                 _isFinalSequenceRunning = true;
+                int nextStageIndex = _currentStageIndex + 1;
+                _caveGoldView.SetStage(nextStageIndex);
                 PlayFinalSequenceAsync(_transitionCancellation.Token).Forget();
                 return;
             }
