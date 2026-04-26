@@ -58,6 +58,17 @@ namespace _Project.Scripts.Gameplay.Units
 
         public void UpgradeGoldPerTrip(int bonus) => GoldPerTripBonus += bonus;
 
+        public void SetGatherPoint(Transform gatherPoint)
+        {
+            if (gatherPoint == null)
+                throw new ArgumentNullException(nameof(gatherPoint));
+
+            _spawner.SetGatherGoldPoint(gatherPoint);
+
+            foreach (Unit unit in _units)
+                unit.SetGatherPoint(gatherPoint);
+        }
+
         private void SubscribeToUnit(Unit unit)
         {
             unit.OnReturnedToGuild += HandleUnitReturnedToGuild;

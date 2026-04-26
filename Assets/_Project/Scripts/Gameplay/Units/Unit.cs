@@ -37,6 +37,11 @@ namespace _Project.Scripts.Gameplay.Units
             _movement.Initialize(guildPoint, gatherGoldPoint, mineTime);
         }
 
+        public void SetGatherPoint(Transform gatherGoldPoint)
+        {
+            _movement.SetGatherPoint(gatherGoldPoint);
+        }
+
         public void Die()
         {
             if (_isDead)

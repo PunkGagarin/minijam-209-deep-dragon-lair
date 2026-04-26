@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c6b952a5639d14ea5c00a3a05a50f8, type: 3}
   m_Name: GoldReserveConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Gold.GoldReserveConfig
-  <MaxValue>k__BackingField: 5000
+  <MaxValue>k__BackingField: 10

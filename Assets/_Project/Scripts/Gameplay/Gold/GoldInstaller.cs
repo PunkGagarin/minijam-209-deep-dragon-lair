@@ -7,7 +7,6 @@ namespace _Project.Scripts.Gameplay.Gold
     public class GoldInstaller : MonoInstaller
     {
         [SerializeField] private GoldView _goldView;
-        [SerializeField] private GoldPile _goldPile;
         [SerializeField] private GoldReserveView _reserveView;
         [SerializeField] private GoldReserveConfig _reserveConfig;
 
@@ -22,8 +21,8 @@ namespace _Project.Scripts.Gameplay.Gold
             Container.Bind<GoldView>()
                 .FromInstance(_goldView).AsSingle();
 
-            Container.Bind<GoldPile>()
-                .FromInstance(_goldPile).AsSingle();
+            Container.Bind<CaveGoldView>()
+                .FromComponentInHierarchy().AsSingle();
 
             Container.BindInterfacesAndSelfTo<GoldPresenter>()
                 .FromNew().AsSingle().NonLazy();

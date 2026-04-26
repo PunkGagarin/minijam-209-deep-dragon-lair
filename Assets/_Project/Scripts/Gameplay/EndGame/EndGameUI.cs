@@ -1,5 +1,4 @@
 using _Project.Scripts.Audio.Domain;
-using _Project.Scripts.Gameplay.Gold;
 using _Project.Scripts.Infrastructure.GameStates;
 using _Project.Scripts.Infrastructure.GameStates.States;
 using _Project.Scripts.Utils;
@@ -17,7 +16,6 @@ namespace _Project.Scripts.Gameplay.EndGame
         [SerializeField] private Button _menuButton;
 
         [Inject] private GameStateMachine _stateMachine;
-        [Inject] private GoldReserveService _reserve;
         [Inject] private AudioService _audio;
 
         private void Awake()
@@ -26,16 +24,12 @@ namespace _Project.Scripts.Gameplay.EndGame
 
             _restartButton.onClick.AddListener(OnRestart);
             _menuButton.onClick.AddListener(OnMenu);
-            _reserve.OnDepleted += Show;
         }
 
         private void OnDestroy()
         {
             _restartButton.onClick.RemoveListener(OnRestart);
             _menuButton.onClick.RemoveListener(OnMenu);
-
-            if (_reserve != null)
-                _reserve.OnDepleted -= Show;
         }
 
         private void OnRestart()
