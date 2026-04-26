@@ -797,6 +797,9 @@ MonoBehaviour:
   _speed: 1
   _delayAtGuild: 3
   _spriteRenderer: {fileID: 0}
+  _animator: {fileID: 0}
+  _miningAnimationName: 
+  _walkAnimationName: 
 --- !u!1 &436624405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,10 +2560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f4bd8d3b9648efb5f99ef38ff72437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.EndGame.FinalStageSequence
-  _animatedRoot: {fileID: 0}
-  _animator: {fileID: 0}
-  _animationStateName: 
-  _uiDelay: 1
+  _animatedRoot: {fileID: 1905431101391656782}
+  _animator: {fileID: 1905431101391656783}
+  _animationStateName: Ending
+  _uiDelay: 2.5
 --- !u!1001 &1469765862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4284,6 +4287,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1867214404}
   m_SourcePrefab: {fileID: 100100000, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+--- !u!1 &1905431101391656782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6825797518473010706, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+  m_PrefabInstance: {fileID: 1905431101391656781}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1905431101391656783 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5899766731926193955, guid: bd5af57bb18e73845b4f1032cf6ec2bb, type: 3}
+  m_PrefabInstance: {fileID: 1905431101391656781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1987158008028230667
 PrefabInstance:
   m_ObjectHideFlags: 0

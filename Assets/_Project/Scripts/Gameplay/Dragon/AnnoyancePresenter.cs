@@ -2,15 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-
+using _Project.Scripts.Audio.Domain;
 using _Project.Scripts.Gameplay.Gold;
 using _Project.Scripts.Gameplay.Units;
-
 using Cysharp.Threading.Tasks;
-
-using UnityEngine;
-
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace _Project.Scripts.Gameplay.Dragon
 {
@@ -21,7 +18,8 @@ namespace _Project.Scripts.Gameplay.Dragon
         [Inject] private AnnoyanceView _view;
         [Inject] private CaveGoldView _caveGoldView;
         [Inject] private UnitService _unitService;
-
+        [Inject] private AudioService _audio;
+        
         private readonly HashSet<Unit> _subscribed = new();
         private GoldPile _subscribedPile;
         private CancellationTokenSource _cts;
@@ -85,13 +83,14 @@ namespace _Project.Scripts.Gameplay.Dragon
 
         private void HandleGoldClicked(GoldPile _)
         {
-            if (UnityEngine.Random.value < _config.GoldClickChance)
+            _audio.PlaySound(Sounds.coin);
+            if (Random.value < _config.GoldClickChance)
                 _service.Add(_config.GoldClickAmount);
         }
 
         private void HandleUnitMiningCompleted(Unit _)
         {
-            if (UnityEngine.Random.value < _config.MiningCompletedChance)
+            if (Random.value < _config.MiningCompletedChance)
                 _service.Add(_config.MiningCompletedAmount);
         }
 
@@ -137,7 +136,7 @@ namespace _Project.Scripts.Gameplay.Dragon
                 IReadOnlyList<Unit> units = _unitService.Units;
                 for (int i = 0; i < units.Count; i++)
                 {
-                    if (UnityEngine.Random.value < _config.MovementTickChance)
+                    if (Random.value < _config.MovementTickChance)
                         _service.Add(_config.MovementTickAmount);
                 }
             }

@@ -1,5 +1,5 @@
 using System;
-
+using _Project.Scripts.Audio.Domain;
 using _Project.Scripts.Gameplay.Currencies;
 using _Project.Scripts.Gameplay.Dragon;
 using _Project.Scripts.Gameplay.Gem;
@@ -21,6 +21,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
         [Inject] private UnitService _unitService;
         [Inject] private AnnoyanceService _annoyanceService;
         [Inject] private GemService _gemService;
+        [Inject] private AudioService _audio;
 
         private int _goldPerClickUpgradeLevel = 0;
         private int _moveSpeedUpgradeLevel = 0;
@@ -93,7 +94,11 @@ namespace _Project.Scripts.Gameplay.GuildHall
             }
         }
 
-        private void HandleBuildingClicked(GuildHall _) => _shopView.Show();
+        private void HandleBuildingClicked(GuildHall _)
+        {
+            _shopView.Show();
+            _audio.PlaySound(Sounds.buttonClick);
+        }
 
         private void HandleClose() => _shopView.Hide();
 
@@ -104,7 +109,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeGoldPerClickButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _goldPerClickUpgradeLevel++;
             _goldService.UpgradeBonusPerClick(_config.BonusPerUpgrade);
             UpdateView();
@@ -118,7 +123,8 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 return;
             }
 
-            _unitService.TryPurchaseUnit();
+            var success = _unitService.TryPurchaseUnit();
+            _audio.PlaySound(success ? Sounds.store.ToString() : Sounds.store_otmena.ToString());
         }
         
         private void HandleBuyCrow()
@@ -139,7 +145,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeMoveSpeedButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _moveSpeedUpgradeLevel++;
             _unitService.UpgradeMoveSpeed(_config.MoveSpeedBonusPerUpgrade);
             UpdateView();
@@ -152,7 +158,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeNoiseReductionButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _noiseReductionUpgradeLevel++;
             _annoyanceService.UpgradeNoiseReduction(_config.NoiseReductionPerUpgrade);
             UpdateView();
@@ -165,7 +171,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeUnitGoldButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _unitGoldUpgradeLevel++;
             _unitService.UpgradeGoldPerTrip(_config.UnitGoldBonusPerUpgrade);
             UpdateView();
@@ -191,7 +197,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeGemChanceButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _gemChanceUpgradeLevel++;
             _unitService.UpgradeGemDropChance(_config.GemChanceBonusPerUpgrade);
             UpdateView();
@@ -204,7 +210,7 @@ namespace _Project.Scripts.Gameplay.GuildHall
                 _shopView.UpgradeGemQuantityButton.PlayInsufficientFundsShake();
                 return;
             }
-
+            _audio.PlaySound(Sounds.store.ToString());
             _gemQuantityUpgradeLevel++;
             _unitService.UpgradeGemDropAmount(_config.GemQuantityBonusPerUpgrade);
             UpdateView();

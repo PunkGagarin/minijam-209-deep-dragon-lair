@@ -109,6 +109,9 @@ MonoBehaviour:
   _speed: 1
   _delayAtGuild: 3
   _spriteRenderer: {fileID: 3354229344415223791}
+  _animator: {fileID: 2151188728898975404}
+  _miningAnimationName: Searching
+  _walkAnimationName: Sneaking
 --- !u!114 &-8686756688444098767
 MonoBehaviour:
   m_ObjectHideFlags: 0

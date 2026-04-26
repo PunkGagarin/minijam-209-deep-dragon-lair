@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-
+using _Project.Scripts.Audio.Domain;
 using Cysharp.Threading.Tasks;
 
 using UnityEngine;
@@ -17,15 +17,12 @@ namespace _Project.Scripts.Gameplay.EndGame
         [SerializeField] private float _uiDelay = 1f;
 
         [Inject] private EndGameUI _endGameUi;
+        [Inject] private AudioService _audio;
 
         private bool _isRunning;
 
         public async UniTask PlayAsync(CancellationToken cancellationToken)
         {
-            //todo: finish me later
-            _endGameUi.Show();
-            return;
-            
             if (_isRunning)
                 return;
 
@@ -49,6 +46,7 @@ namespace _Project.Scripts.Gameplay.EndGame
             if (_uiDelay > 0f)
                 await UniTask.Delay(TimeSpan.FromSeconds(_uiDelay), cancellationToken: cancellationToken);
 
+            _audio.PlayMusic(Sounds.ending_happy.ToString());
             _endGameUi.Show();
         }
     }
