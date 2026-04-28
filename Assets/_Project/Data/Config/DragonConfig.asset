@@ -16,8 +16,8 @@ MonoBehaviour:
   <GoldClickChance>k__BackingField: 0.2
   <GoldClickAmount>k__BackingField: 3
   <MiningCompletedChance>k__BackingField: 0.5
-  <MiningCompletedAmount>k__BackingField: 2
+  <MiningCompletedAmount>k__BackingField: 3
   <MovementTickInterval>k__BackingField: 1
-  <MovementTickChance>k__BackingField: 0.1
-  <MovementTickAmount>k__BackingField: 1
+  <MovementTickChance>k__BackingField: 0.2
+  <MovementTickAmount>k__BackingField: 2
   <FillResetDelay>k__BackingField: 3

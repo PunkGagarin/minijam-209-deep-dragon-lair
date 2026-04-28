@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: GuildHallShopConfig
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.GuildHall.GuildHallShopConfig
   <BaseCost>k__BackingField: 20
-  <CostMultiplier>k__BackingField: 3.5
+  <CostMultiplier>k__BackingField: 3
   <BonusPerUpgrade>k__BackingField: 1
-  <UnitBaseCost>k__BackingField: 25
-  <UnitCostMultiplier>k__BackingField: 1.4
+  <UnitBaseCost>k__BackingField: 100
+  <UnitCostMultiplier>k__BackingField: 1.3
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15
-  <NoiseReductionBaseCost>k__BackingField: 250
-  <NoiseReductionCostMultiplier>k__BackingField: 2
+  <NoiseReductionBaseCost>k__BackingField: 300
+  <NoiseReductionCostMultiplier>k__BackingField: 1.9
   <NoiseReductionPerUpgrade>k__BackingField: 0.1
-  <UnitGoldBaseCost>k__BackingField: 60
+  <UnitGoldBaseCost>k__BackingField: 110
   <UnitGoldCostMultiplier>k__BackingField: 2.5
   <UnitGoldBonusPerUpgrade>k__BackingField: 5
-  <GemChanceBaseCost>k__BackingField: 300
-  <GemChanceCostMultiplier>k__BackingField: 2
+  <GemChanceBaseCost>k__BackingField: 500
+  <GemChanceCostMultiplier>k__BackingField: 1.5
   <GemChanceBonusPerUpgrade>k__BackingField: 0.2
   <GemQuantityBaseCost>k__BackingField: 5
   <GemQuantityCostMultiplier>k__BackingField: 2

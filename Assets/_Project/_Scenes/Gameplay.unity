@@ -7405,8 +7405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f4bd8d3b9648efb5f99ef38ff72437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.EndGame.FinalStageSequence
-  _animatedRoot: {fileID: 0}
-  _animator: {fileID: 0}
+  _animatedRoot: {fileID: 1867214400}
+  _animator: {fileID: 1867214402}
   _animationStateName: Ending
   _uiDelay: 2.5
 --- !u!1001 &1469765862
