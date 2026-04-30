@@ -16,15 +16,15 @@ MonoBehaviour:
   <CostMultiplier>k__BackingField: 3
   <BonusPerUpgrade>k__BackingField: 1
   <UnitBaseCost>k__BackingField: 100
-  <UnitCostMultiplier>k__BackingField: 1.3
+  <UnitCostMultiplier>k__BackingField: 1.2
   <MoveSpeedBaseCost>k__BackingField: 200
   <MoveSpeedCostMultiplier>k__BackingField: 1.7
   <MoveSpeedBonusPerUpgrade>k__BackingField: 0.15
   <NoiseReductionBaseCost>k__BackingField: 300
   <NoiseReductionCostMultiplier>k__BackingField: 1.9
   <NoiseReductionPerUpgrade>k__BackingField: 0.1
-  <UnitGoldBaseCost>k__BackingField: 110
-  <UnitGoldCostMultiplier>k__BackingField: 2.5
+  <UnitGoldBaseCost>k__BackingField: 130
+  <UnitGoldCostMultiplier>k__BackingField: 2
   <UnitGoldBonusPerUpgrade>k__BackingField: 5
   <GemChanceBaseCost>k__BackingField: 500
   <GemChanceCostMultiplier>k__BackingField: 1.5

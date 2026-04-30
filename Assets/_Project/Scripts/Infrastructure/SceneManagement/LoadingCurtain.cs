@@ -14,6 +14,7 @@ namespace _Project.Scripts.Infrastructure.SceneManagement
 
         [field: SerializeField]
         public Image image;
+        
         private TweenerCore<Color, Color, ColorOptions> _tween;
 
         public override void Show()

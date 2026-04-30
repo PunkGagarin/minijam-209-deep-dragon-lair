@@ -128,9 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b72cfca376e4b7d80b1ff6eb6e84d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Gameplay.Units.Movement
-  _speed: 2
+  _speed: 1.7
   _delayAtGuild: 1
   _spriteRenderer: {fileID: 7225088739359248477}
+  _animator: {fileID: 0}
+  _miningAnimationName: 
+  _walkAnimationName: 
 --- !u!114 &5797850113390841564
 MonoBehaviour:
   m_ObjectHideFlags: 0
